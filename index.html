@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javier Manzano Fitness — Método Integral JM</title>
+  <meta name="description" content="App de guía y recursos del Método Integral JM. Entrenamientos semanales, rutinas, guías PDF, nutrición y descanso.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       SPLASH SCREEN — se oculta en init() con clase .out
+  ============================================================ -->
+  <div id="splash">
+    <div class="splash-logo-wrap">
+      <img class="splash-logo-img" src="data:image/png;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAA
+A6ABAAMAAAABAAEAAKACAAQAAAABAAAB9KADAAQAAAABAAAB9AAAAAD/7QA4UGhvdG9zaG9wIDMu
+MAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgB9AH0AwEiAAIR
+AQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAAB
+fQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5
+OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeo
+qaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMB
+AQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYS
+QVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNU
+VVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5
+usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAQEBAQEBAgEBAgMCAgID
+BAMDAwMEBgQEBAQEBgcGBgYGBgYHBwcHBwcHBwgICAgICAkJCQkJCwsLCwsLCwsLC//bAEMBAgIC
+AwMDBQMDBQsIBggLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsL
+CwsLC//dAAQAIP/aAAwDAQACEQMRAD8A/wA/+iiigAooooAKKKKACiiigAooooAKKKKACiiigAoo
+ooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiii
+gAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//9D/AD/6KKKACiiigAoo
+ooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiii
+gAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKA
+CiiigD//0f8AP/ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiii
+gAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKA
+CiiigAooooAKKKKACiiigAooooAKKKKAP//S/wA/+iiigAooooAKKKKACiiigAooooAKKKKACiii
+gAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKA
+CiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//9P/AD/6KKKACiii
+gAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKA
+CiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+KKKACiiigD//1P8AP/ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKA
+CiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+KKKACiiigAooooAKKKKACiiigAooooAKKKKAP//V/wA/+iiigAooooAKKKKACiiigAooooAKKKKA
+CiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//9b/AD/6KKKA
+CiiigAooooAKKKKACiiigAooooAKKKKACrdhYX2q30OmaZDJc3Ny6xRRRKXeR3OFVVGSSScADkmq
+lfZX7Bv7dPxu/wCCdH7RFj+07+z5HpkniXT7S6s4Rq9r9rtgl2mxjsDIdw4KsGGCO4yKAP0a/ZC/
+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
+pStp3iG30p7f7H5K2fnyuLyKGRpo4miJYsH4wPx//wCCnXw//YoufHOu/tG/s6/tKW/xr8U+P/FW
+o6rqulW/hPVdA+xJqEkt1JObjUAqS/vWCBEG453HAFAH25pf/BAb4VXn7M9v+15f/te/DKz+H82r
+p4dbWJIdS+zLrDQC5NmG8jLSLFljtBXAPPFfmo3/AATw8Tt+wN40/wCChtt4s0yTwf4X8eJ4BsIP
+LmW41i8aJbjzrfKhVjEDeYQ+GwCMZFfTv7VP7XX7Pt//AMEX/wBmr9hD4LeIBrHijR/EHiTxf49t
+ktLm3Sx1G4lMWnx+ZNFHHOxtJnDNC8iqUwSMgV9k+Bf+C1TfsEf8EkPgP+y/+wV4p0u7+I1xrHiT
+XviLBqGgC9hsZZpwunxKdRtTBI725GZLcvt8sqzDIBAPx6/ao/YG8c/snfs4fAz9oXxxrljd/wDC
+9NGv9dsNJt1kFzYWVpLHHE87MAp+0CTfHszgKc18F1+9X/Bwr/wUA+E37f8A+1n4I8SfAjxQvi7w
+t4K8BaP4fGow6fNpcFxqSNNPeyR2s8Fu0YMkoXAiVMINvygV+CtABRRRQAUUUUAFFFFABRRRQAUU
+UUAFFFFABRRRQAUUUUAFFFFABRRRQB//1/8AP/ooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoo
+ooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//Q/wA/+iiigAooooAK
+KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoo
+ooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiii
+gAooooA//9H/AD/6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoo
+ooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiii
+gAooooAKKKKACiiigAooooAKKKKACiiigD//0v8AP/ooooAKKKKACiiigAooooAKKKKACiiigAoo
+ooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiii
+gAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//T/wA/+iiigAoo
+ooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiii
+gAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKA
+CiiigAooooA//9T/AD/6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiii
+gAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKA
+CiiigAooooAKKKKACiiigAooooAKKKKACiiigD//1f8AP/ooooAKKKKACiiigAooooAKKKKACiii
+gAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKA
+CiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//W/wA/+iii
+gAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKA
+CiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+KKKACiiigAooooA//9k=" alt="Javier Manzano Fitness" />
+    </div>
+    <div class="sp-line" id="sp-line"></div>
+  </div>
+
+  <!-- Hamburger — visible solo en móvil (media query en CSS) -->
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- ============================================================
+       SHELL — sidebar + área principal
+  ============================================================ -->
+  <div class="shell">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar" id="sidebar">
+
+      <div class="sb-brand">
+        <div class="sb-logo-line">
+          <span class="sb-logo-javier">Javier&nbsp;</span>
+          <span class="sb-logo-manzano">Manzano</span>
+        </div>
+        <div class="sb-tagline">Fitness · Salud Integral</div>
+      </div>
+
+      <!-- data-tab conecta cada ítem con su sección.
+           El listener está en init() por delegación en .sb-nav. -->
+      <nav class="sb-nav">
+
+        <div class="sb-section-label">Entrenamiento</div>
+
+        <div class="sb-item active" data-tab="wod">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18M9 21V9"/>
+          </svg>
+          WOD Semanal
+        </div>
+
+        <div class="sb-item" data-tab="rutinas">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h10"/>
+          </svg>
+          Rutinas
+        </div>
+
+        <div class="sb-section-label">Recursos</div>
+
+        <div class="sb-item" data-tab="pdfs">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+          </svg>
+          Guías PDF
+        </div>
+
+        <div class="sb-section-label">Método JM</div>
+
+        <div class="sb-item" data-tab="nutricion">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+            <path d="M8 12h8M12 8v8"/>
+          </svg>
+          Nutrición
+        </div>
+
+        <div class="sb-item" data-tab="descanso">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          Descanso
+        </div>
+
+        <div class="sb-item" data-tab="contacto">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.61a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          Contacto
+        </div>
+
+      </nav>
+
+      <!-- Acceso al panel admin -->
+      <div class="sb-footer">
+        <div class="admin-trigger" role="button" aria-label="Abrir panel de administración">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.07 4.93A10 10 0 0 1 21.95 12 10 10 0 0 1 12 22 10 10 0 0 1 2.05 12 10 10 0 0 1 4.93 4.93"/>
+          </svg>
+          <span class="admin-trigger__label">Panel admin</span>
+          <svg class="admin-trigger__chevron" viewBox="0 0 24 24" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </div>
+      </div>
+
+    </aside><!-- /sidebar -->
+
+
+    <!-- ── ÁREA PRINCIPAL ── -->
+    <main class="main" id="main">
+
+
+      <!-- ════════════════════════════════════════════════════
+           TAB: WOD SEMANAL
+           El contenido dinámico lo inyecta render.wod() y
+           render.archive() desde app.js.
+      ════════════════════════════════════════════════════ -->
+      <div class="tab active" id="tab-wod">
+
+        <!-- BIENVENIDA -->
+        <div class="welcome-block">
+          <div class="welcome-eyebrow">Javier Manzano Fitness</div>
+          <div class="welcome-title">Bienvenido a tu sistema de salud integral</div>
+          <p class="welcome-desc">Esta app es tu recurso de referencia. Aquí encontrarás el entrenamiento semanal, tus rutinas personalizadas, guías de nutrición, descanso y todos los recursos que necesitas para avanzar con claridad.</p>
+          <div class="welcome-pillars">
+            <div class="welcome-pillar">
+              <span class="wp-icon">🏋️</span>
+              <span class="wp-label">Entrena</span>
+            </div>
+            <div class="welcome-pillar">
+              <span class="wp-icon">🥗</span>
+              <span class="wp-label">Nutre</span>
+            </div>
+            <div class="welcome-pillar">
+              <span class="wp-icon">🌙</span>
+              <span class="wp-label">Descansa</span>
+            </div>
+            <div class="welcome-pillar">
+              <span class="wp-icon">📚</span>
+              <span class="wp-label">Aprende</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CÓMO USAR LA APP -->
+        <div class="howto-block">
+          <div class="howto-title">Cómo usar la app</div>
+          <div class="howto-steps">
+            <div class="howto-step">
+              <div class="hs-num">01</div>
+              <div class="hs-text">
+                <div class="hs-title">WOD Semanal</div>
+                <div class="hs-desc">Cada semana publico un entrenamiento genérico. Si un día no tienes tu rutina personalizada, úsalo como referencia.</div>
+              </div>
+            </div>
+            <div class="howto-step">
+              <div class="hs-num">02</div>
+              <div class="hs-text">
+                <div class="hs-title">Guías PDF</div>
+                <div class="hs-desc">En la sección Biblioteca tienes acceso a todas mis guías — nutrición, descanso, hormonas, salud integral — organizadas por categoría.</div>
+              </div>
+            </div>
+            <div class="howto-step">
+              <div class="hs-num">03</div>
+              <div class="hs-text">
+                <div class="hs-title">Rutinas</div>
+                <div class="hs-desc">Accede a los planes de entrenamiento completos. Cada rutina tiene su PDF descargable con toda la programación.</div>
+              </div>
+            </div>
+            <div class="howto-step">
+              <div class="hs-num">04</div>
+              <div class="hs-text">
+                <div class="hs-title">Dudas o ajustes</div>
+                <div class="hs-desc">Si tienes alguna pregunta o necesitas ajustar algo en tu plan, escríbeme directamente por WhatsApp desde la sección Contacto.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-header">
+          <div class="page-eyebrow">Entrenamiento semanal</div>
+          <h1 class="page-title">WOD de la Semana</h1>
+          <p class="page-desc">Actualizado cada lunes · Sigue el progreso mes a mes</p>
+        </div>
+        <div class="page-rule"></div>
+
+        <div class="page-body">
+
+          <div class="month-chip">
+            <span class="month-dot" aria-hidden="true"></span>
+            <span id="current-month-label"></span>
+          </div>
+
+          <!-- Hero del WOD — rellena render.wod() o WodAI.renderContent() -->
+          <div class="wod-hero" id="wod-hero-container">
+            <div id="wod-ai-content">
+              <!-- Contenido WOD — estático o generado por IA -->
+              <div class="wod-hero-top">
+                <div>
+                  <div class="wod-eyebrow"      id="wd-week"></div>
+                  <div class="wod-title-display" id="wd-title"></div>
+                  <div class="wod-subtitle"      id="wd-subtitle"></div>
+                </div>
+                <div class="wod-badges">
+                  <div class="wod-pill"       id="wd-format"></div>
+                  <div class="wod-diff"       id="wd-diff"></div>
+                  <div class="wod-diff-label">Dificultad</div>
+                </div>
+              </div>
+              <div class="wod-exercises" id="wd-exercises"></div>
+              <div class="wod-note-bar">
+                <div class="wod-note-kw">Nota</div>
+                <div class="wod-note-txt" id="wd-note"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Archivo — rellena render.archive() -->
+          <div class="archive-label">
+            <div class="block-kw">Archivo de WODs</div>
+            <div class="archive-count" id="archive-count"></div>
+          </div>
+          <div class="archive-grid" id="wod-archive"></div>
+
+        </div>
+      </div><!-- /tab-wod -->
+
+
+      <!-- ════════════════════════════════════════════════════
+           TAB: RUTINAS
+           Las tarjetas (con botones funcionales) las genera
+           render.rutinas() desde state.rutinas en app.js.
+           Para editar URLs de PDFs: modifica state.rutinas.
+      ════════════════════════════════════════════════════ -->
+      <div class="tab" id="tab-rutinas">
+
+        <div class="page-header">
+          <div class="page-eyebrow">Entrenamiento estructurado</div>
+          <h1 class="page-title">Rutinas</h1>
+          <p class="page-desc">Programación real · Progresión por mesociclos · Todas descargables en PDF</p>
+        </div>
+        <div class="page-rule"></div>
+
+        <div class="page-body">
+
+          <!-- MÉTODO -->
+          <div class="welcome-block" style="margin-bottom:20px">
+            <div class="welcome-eyebrow">El Método Integral JM</div>
+            <div class="welcome-title">Entrena con inteligencia, no con más horas</div>
+            <p class="welcome-desc">Todas las rutinas están diseñadas bajo el mismo principio: progresión estructurada por mesociclos, control real de la intensidad y adaptación a tu vida. No hay rutinas de relleno — cada sesión tiene un propósito claro.</p>
+          </div>
+
+          <!-- RIR -->
+          <div class="content-block-title">El RIR — tu herramienta de intensidad</div>
+          <div class="tips-grid" style="margin-bottom:20px">
+            <div class="tip-card">
+              <span class="tip-icon">🎯</span>
+              <div class="tip-title">¿Qué es el RIR?</div>
+              <p class="tip-body">RIR significa "Repeticiones en Reserva". Es el número de reps que te quedarían antes de fallar. RIR 2 = podrías hacer 2 más. Es la forma más honesta de medir la intensidad real de tu entrenamiento.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">📈</span>
+              <div class="tip-title">Cómo progresar</div>
+              <p class="tip-body">Semanas 1–2: RIR 3–4 (aprendizaje técnico). Semanas 3–4: RIR 2 (acumulación). Semanas 5–6: RIR 1 (intensificación). Semana 7: Deload. Este ciclo se repite con más carga cada mesociclo.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">⚠️</span>
+              <div class="tip-title">Error más común</div>
+              <p class="tip-body">Ir siempre al fallo. Entrenar constantemente a RIR 0 destruye la recuperación y frena el progreso a largo plazo. La clave es acumular volumen de calidad, no acumular fatiga sin sentido.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🔄</span>
+              <div class="tip-title">Superseries y técnicas</div>
+              <p class="tip-body">Algunas rutinas incluyen superseries (dos ejercicios seguidos sin descanso), drop sets o series descendentes. Están indicadas en el PDF. Úsalas solo cuando te lo indique — son herramientas de intensificación, no la norma.</p>
+            </div>
+          </div>
+
+          <!-- MESOCICLOS -->
+          <div class="content-block-title">Cómo está estructurada la programación</div>
+          <div class="meso-timeline">
+            <div class="meso-step">
+              <div class="meso-week">Sem 1–2</div>
+              <div class="meso-bar meso-low"></div>
+              <div class="meso-label">Adaptación<br><span>RIR 3–4</span></div>
+            </div>
+            <div class="meso-step">
+              <div class="meso-week">Sem 3–4</div>
+              <div class="meso-bar meso-mid"></div>
+              <div class="meso-label">Acumulación<br><span>RIR 2</span></div>
+            </div>
+            <div class="meso-step">
+              <div class="meso-week">Sem 5–6</div>
+              <div class="meso-bar meso-high"></div>
+              <div class="meso-label">Intensificación<br><span>RIR 1</span></div>
+            </div>
+            <div class="meso-step">
+              <div class="meso-week">Sem 7</div>
+              <div class="meso-bar meso-deload"></div>
+              <div class="meso-label">Deload<br><span>–40% volumen</span></div>
+            </div>
+          </div>
+
+          <!-- RUTINAS -->
+          <div class="content-block-title">Elige tu rutina</div>
+          <div id="rutinas-list"></div>
+
+          <div class="cta-box">
+            <div class="cta-title">¿Quieres una rutina personalizada para ti?</div>
+            <p class="cta-desc">Estas rutinas son un punto de partida sólido. El Método Integral JM trabaja desde tu situación real — tu historial, tus objetivos y tu vida — no desde una plantilla genérica.</p>
+            <button class="btn btn-gold" id="cta-ir-contacto">Reservar llamada gratuita →</button>
+          </div>
+
+        </div>
+      </div><!-- /tab-rutinas -->
+
+
+      <!-- ════════════════════════════════════════════════════
+           TAB: PDFs
+           Los PDFs seed están en el HTML.
+           Los añadidos vía admin los inyecta render.dynamicPdfs().
+      ════════════════════════════════════════════════════ -->
+      <div class="tab" id="tab-pdfs">
+
+        <div class="page-header">
+          <div class="page-eyebrow">Biblioteca de recursos</div>
+          <h1 class="page-title">Guías & PDFs</h1>
+          <p class="page-desc">Descarga los documentos del Método Integral JM</p>
+        </div>
+        <div class="page-rule"></div>
+
+        <div class="page-body">
+          <div id="pdf-library">
+
+            <!-- CATEGORÍA: Salud General -->
+            <div class="pdf-block" id="pdf-cat-Salud General">
+              <div class="pdf-block-title">Salud General</div>
+
+              <div class="pdf-row">
+                <div class="pdf-icon">PDF</div>
+                <div class="pdf-info">
+                  <div class="pdf-name">Guía para la Salud</div>
+                  <div class="pdf-meta">Salud General · Método Integral JM</div>
+                </div>
+                <a href="https://canva.link/i3kttora2ysf71v" target="_blank" rel="noopener noreferrer" class="btn btn-gold">↓</a>
+              </div>
+
+              <div class="pdf-row">
+                <div class="pdf-icon">PDF</div>
+                <div class="pdf-info">
+                  <div class="pdf-name">Sanación del Cuerpo de Manera Natural</div>
+                  <div class="pdf-meta">Salud General · Descanso · Bienestar</div>
+                </div>
+                <a href="https://drive.google.com/file/d/1WtPbZHwUuMF1H-xjBC3r23WDLpnC4yfP/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-gold">↓</a>
+              </div><!-- /pdf-library -->
+        </div>
+      </div><!-- /tab-pdfs -->
+
+
+      <!-- ════════════════════════════════════════════════════
+           TAB: NUTRICIÓN
+      ════════════════════════════════════════════════════ -->
+      <div class="tab" id="tab-nutricion">
+
+        <div class="page-header">
+          <div class="page-eyebrow">Método Integral JM</div>
+          <h1 class="page-title">Nutrición</h1>
+          <p class="page-desc">No dietas. Estrategia. Hábitos que duran.</p>
+        </div>
+        <div class="page-rule"></div>
+
+        <div class="page-body">
+
+          <!-- BLOQUE 1: Pilares -->
+          <div class="content-block-title">Los pilares</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🥩</span>
+              <div class="tip-title">Come Más Mejor (CMM)</div>
+              <p class="tip-body">No se trata de comer menos, sino de comer inteligente. Prioriza proteína, vegetales y calidad. Aprende a gestionar porciones sin obsesión calórica.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">⚡</span>
+              <div class="tip-title">Proteína: la base</div>
+              <p class="tip-body">1,6–2,2 g por kg de peso. Huevos, pollo, merluza, sardinas, legumbres, queso fresco, yogur griego. Sin suplementos si tu dieta es sólida.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">💧</span>
+              <div class="tip-title">Hidratación</div>
+              <p class="tip-body">Mínimo 2 litros al día. Con entrenamiento fuerte o calor, añade electrolitos. Un mal estado de hidratación te cuesta un 10–15% de rendimiento.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">💊</span>
+              <div class="tip-title">Suplementación base</div>
+              <p class="tip-body">Creatina 5g/día, Vitamina D3 + K2 en invierno, Omega-3 si tu dieta es baja en pescado azul. Todo lo demás es opcional.</p>
+            </div>
+          </div>
+
+          <!-- BLOQUE 2: Estructura del día -->
+          <div class="content-block-title">Cómo estructurar tus comidas</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🌅</span>
+              <div class="tip-title">Desayuno</div>
+              <p class="tip-body">Prioriza proteína desde primera hora. Huevos, yogur griego, queso fresco o fiambre de calidad. Evita azúcares simples al despertar — disparan el cortisol y generan hambre a las 2 horas.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">☀️</span>
+              <div class="tip-title">Comida principal</div>
+              <p class="tip-body">Tu comida más completa. Proteína + carbohidrato de calidad (arroz, patata, legumbre) + verdura. Si entrenas por la tarde, este es tu depósito de glucógeno.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🌙</span>
+              <div class="tip-title">Cena</div>
+              <p class="tip-body">Más ligera que la comida. Proteína + verdura + grasa saludable. Reduce carbohidratos si no has entrenado. Cena al menos 2 horas antes de dormir para no interferir con el descanso.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🏋️</span>
+              <div class="tip-title">Antes y después de entrenar</div>
+              <p class="tip-body">Pre: carbohidrato de fácil digestión 60–90 min antes. Post: proteína + carbohidrato en los 60 min siguientes. La ventana anabólica es real pero no dramática — lo importante es el total del día.</p>
+            </div>
+          </div>
+
+          <!-- BLOQUE 3: Antiinflamación -->
+          <div class="content-block-title">Alimentación antiinflamatoria</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🐟</span>
+              <div class="tip-title">Omega-3 y grasas buenas</div>
+              <p class="tip-body">Sardinas, caballa, salmón, nueces, aceite de oliva virgen extra. Las grasas omega-3 reducen la inflamación sistémica, mejoran la recuperación muscular y apoyan la salud hormonal.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🥑</span>
+              <div class="tip-title">Alimentos clave</div>
+              <p class="tip-body">Aguacate, cúrcuma con pimienta negra, jengibre, arándanos, brócoli, aceite de oliva, frutos secos. Incorpóralos a diario — no como "superalimentos" sino como hábito base.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🚫</span>
+              <div class="tip-title">Qué evitar</div>
+              <p class="tip-body">Ultraprocesados, aceites de semillas refinados, azúcar añadido, alcohol frecuente y harinas refinadas en exceso. No hay que ser perfecto — hay que ser consistente el 80% del tiempo.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🦠</span>
+              <div class="tip-title">Salud intestinal</div>
+              <p class="tip-body">El intestino regula inflamación, inmunidad y estado de ánimo. Incluye fermentados (kéfir, chucrut, yogur natural), fibra variada y prebióticos. Un intestino sano es la base de todo lo demás.</p>
+            </div>
+          </div>
+
+          <!-- BLOQUE 4: Mitos -->
+          <div class="content-block-title">Mitos que hay que destruir</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">❌</span>
+              <div class="tip-title">"Los carbohidratos engordan"</div>
+              <p class="tip-body">Falso. El exceso de calorías totales engorda, no un macronutriente. Los carbohidratos son el combustible principal del músculo. Eliminarlos hunde tu rendimiento y tu recuperación.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">❌</span>
+              <div class="tip-title">"Hay que comer cada 3 horas"</div>
+              <p class="tip-body">No hay evidencia que sostenga esto. Come cuando tengas hambre y organiza tus comidas según tu horario real. Lo que importa es el total diario, no la frecuencia.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">❌</span>
+              <div class="tip-title">"La grasa es el enemigo"</div>
+              <p class="tip-body">Las grasas saludables son esenciales para la producción hormonal, la absorción de vitaminas y la salud cerebral. Temer a la grasa lleva a déficits que afectan directamente al rendimiento.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">❌</span>
+              <div class="tip-title">"Más proteína = más músculo"</div>
+              <p class="tip-body">Hasta cierto punto. Superar los 2,2 g/kg no aporta beneficio adicional. El entrenamiento y el descanso son los que construyen músculo — la proteína es la materia prima, no el motor.</p>
+            </div>
+          </div>
+
+          <!-- Alimentos de referencia -->
+          <div class="alimentos-clave">
+            <div class="alimentos-titulo">Alimentos de referencia JM</div>
+            <div class="alimentos-grid">
+              <div>Merluza al vapor</div>
+              <div>Tortilla de patata</div>
+              <div>Lentejas con verdura</div>
+              <div>Sardinas en aceite</div>
+              <div>Yogur griego natural</div>
+              <div>Arroz con pollo</div>
+              <div>Aguacate con huevo</div>
+              <div>Kéfir natural</div>
+              <div>Caballa al horno</div>
+              <div>Brócoli con AOVE</div>
+              <div>Avena con frutos rojos</div>
+              <div>Nueces y almendras</div>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /tab-nutricion -->
+
+
+      <!-- ════════════════════════════════════════════════════
+           TAB: DESCANSO
+      ════════════════════════════════════════════════════ -->
+      <div class="tab" id="tab-descanso">
+
+        <div class="page-header">
+          <div class="page-eyebrow">Método Integral JM</div>
+          <h1 class="page-title">Descanso & Gestión</h1>
+          <p class="page-desc">El pilar más ignorado. El que más diferencia.</p>
+        </div>
+        <div class="page-rule"></div>
+
+        <div class="page-body">
+
+          <!-- BLOQUE 1: Sueño -->
+          <div class="content-block-title">El sueño como herramienta</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🌙</span>
+              <div class="tip-title">Sueño de calidad</div>
+              <p class="tip-body">7–9 horas reales. Más importante que cualquier suplemento. Regula cortisol, favorece la síntesis proteica y controla el apetito. Mismo horario siempre.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">☀️</span>
+              <div class="tip-title">Luz solar al despertar</div>
+              <p class="tip-body">10–15 minutos de sol directo en los primeros 30 min del día. Sincroniza tu reloj biológico, detiene la melatonina residual y regula el cortisol de forma natural. Es gratis y es de lo más efectivo.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">📵</span>
+              <div class="tip-title">Sin pantallas 1h antes</div>
+              <p class="tip-body">La luz azul de pantallas inhibe la melatonina y retrasa el sueño profundo. Pon el móvil en modo avión, baja la intensidad de las luces y crea un ambiente que le diga a tu cuerpo que es de noche.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">❄️</span>
+              <div class="tip-title">Temperatura y entorno</div>
+              <p class="tip-body">La habitación entre 18–21ºC favorece el sueño profundo. Oscuridad total, silencio o ruido blanco. El cuerpo necesita bajar su temperatura interna para entrar en fase REM — el calor lo impide.</p>
+            </div>
+          </div>
+
+          <!-- BLOQUE 2: Cortisol y estrés -->
+          <div class="content-block-title">Control del cortisol y el estrés</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🧠</span>
+              <div class="tip-title">Qué es el cortisol</div>
+              <p class="tip-body">El cortisol es la hormona del estrés. En dosis normales es necesario — te activa por la mañana y regula la energía. El problema es cuando se mantiene elevado crónicamente: bloquea la pérdida de grasa, destruye músculo y arruina el sueño.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🌬️</span>
+              <div class="tip-title">Respiración 4-7-8</div>
+              <p class="tip-body">Inhala 4 segundos, retén 7, exhala 8. Activa el sistema nervioso parasimpático en minutos. Úsala antes de dormir, en momentos de ansiedad o antes de una sesión intensa. 3–5 rondas son suficientes.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🚶</span>
+              <div class="tip-title">Caminar: la herramienta más infravalorada</div>
+              <p class="tip-body">7.000–10.000 pasos diarios reducen el cortisol, mejoran la sensibilidad a la insulina y aceleran la recuperación muscular. Los días sin entrenamiento son días de movimiento ligero, no de sofá.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">📱</span>
+              <div class="tip-title">Cortisol digital</div>
+              <p class="tip-body">Cada notificación, cada scroll infinito, cada comparación en redes dispara cortisol. Pon límites reales al uso del móvil. Los primeros 30 minutos del día y la última hora antes de dormir: sin redes sociales.</p>
+            </div>
+          </div>
+
+          <!-- BLOQUE 3: Recuperación -->
+          <div class="content-block-title">Recuperación activa e inteligente</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">📆</span>
+              <div class="tip-title">Semana de descarga (deload)</div>
+              <p class="tip-body">Cada 4–6 semanas reduce el volumen un 40% manteniendo la intensidad. No es perder el tiempo — es donde el cuerpo consolida las adaptaciones. Sin deload, llegas al sobreentrenamiento sin darte cuenta.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🧘</span>
+              <div class="tip-title">Movilidad y estiramientos</div>
+              <p class="tip-body">10–15 minutos de movilidad articular al día mejora la recuperación y previene lesiones. No tiene que ser una sesión de yoga — una rutina sencilla de cadera, hombros y columna es suficiente.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🛁</span>
+              <div class="tip-title">Baños y termoterapia</div>
+              <p class="tip-body">Ducha fría por la mañana activa el sistema nervioso y mejora la resiliencia al estrés. Baño caliente por la noche favorece la relajación muscular y el sueño. La combinación calor-frío acelera la recuperación.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🌿</span>
+              <div class="tip-title">Naturaleza y desconexión</div>
+              <p class="tip-body">20–30 minutos en un entorno natural reduce el cortisol de forma medible. Paseo por el campo, playa o parque sin móvil. El shinrin yoku (baño de bosque japonés) tiene evidencia científica sólida sobre su impacto en el sistema nervioso.</p>
+            </div>
+          </div>
+
+          <!-- BLOQUE 4: Señales de alarma -->
+          <div class="content-block-title">Señales de que no estás recuperando bien</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">⚠️</span>
+              <div class="tip-title">Rendimiento en caída</div>
+              <p class="tip-body">Si llevas 2 semanas sin progresar o con bajadas en los pesos que manejabas, no es falta de esfuerzo — es falta de recuperación. Más entrenamiento en este punto solo empeora las cosas.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">⚠️</span>
+              <div class="tip-title">Irritabilidad y mal humor</div>
+              <p class="tip-body">El cortisol elevado afecta directamente al estado de ánimo. Si estás más irascible de lo normal, con poca paciencia o apático, tu sistema nervioso está saturado. Señal clara de que toca bajar revoluciones.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">⚠️</span>
+              <div class="tip-title">Hambre descontrolada</div>
+              <p class="tip-body">La privación de sueño dispara la grelina (hormona del hambre) y suprime la leptina (saciedad). Si tienes antojos constantes de azúcar y carbohidratos, revisa primero cuántas horas y con qué calidad estás durmiendo.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">⚠️</span>
+              <div class="tip-title">Lesiones frecuentes</div>
+              <p class="tip-body">Las lesiones por uso repetitivo y las molestias que no remiten son señales de que el cuerpo no tiene tiempo de repararse entre sesiones. No es mala suerte — es sobreentrenamiento encubierto.</p>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /tab-descanso -->
+
+
+      <!-- ════════════════════════════════════════════════════
+           TAB: CONTACTO
+      ════════════════════════════════════════════════════ -->
+      <div class="tab" id="tab-contacto">
+
+        <div class="page-header">
+          <div class="page-eyebrow">Trabaja con Javier</div>
+          <h1 class="page-title">Contacto</h1>
+          <p class="page-desc">Sin compromisos · Respuesta en menos de 24h</p>
+        </div>
+        <div class="page-rule"></div>
+
+        <div class="page-body">
+          <div class="contact-grid">
+
+            <div class="cc-card">
+              <span class="cc-icon" aria-hidden="true">💬</span>
+              <div class="cc-title">WhatsApp directo</div>
+              <p class="cc-desc">La forma más rápida. Sin bots, sin asistentes. Resuelvo dudas sobre WODs, rutinas o cualquier consulta del método.</p>
+              <!-- ⚠️ CAMBIA el número de teléfono -->
+              <a href="https://wa.me/34000000000?text=Hola%20Javier,%20he%20visto%20tu%20app%20y%20quiero%20saber%20más"
+                 class="btn btn-wa"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                Escribir a Javier →
+              </a>
+            </div>
+
+            <div class="cc-card">
+              <span class="cc-icon" aria-hidden="true">📅</span>
+              <div class="cc-title">Llamada diagnóstico</div>
+              <p class="cc-desc">30 minutos gratuitos. Analizamos tu situación y objetivos. Si hay encaje, empezamos. Si no, sin problema.</p>
+              <!-- ⚠️ CAMBIA el enlace de Calendly/Cal.com -->
+              <a href="https://tr.ee/7v77NR5yG2"
+                 class="btn btn-cal"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                Reservar llamada →
+              </a>
+            </div>
+
+          </div>
+
+          <div class="instagram-block">
+            <div class="instagram-label">Sígueme en Instagram</div>
+            <a href="https://instagram.com/javiermanzanofitness"
+               class="instagram-handle"
+               target="_blank"
+               rel="noopener noreferrer">
+              @javiermanzanofitness
+            </a>
+          </div>
+        </div>
+      </div><!-- /tab-contacto -->
+
+
+    </main><!-- /main -->
+  </div><!-- /shell -->
+
+
+  <!-- ============================================================
+       PANEL ADMIN — Modal
+       Toda la lógica está en app.js.
+       Se usa el atributo `hidden` (semántico) en lugar de
+       style="display:none" para mostrar/ocultar formularios.
+  ============================================================ -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Panel de administración">
+    <div class="modal">
+
+      <div class="modal-head">
+        <div class="modal-title">Panel de administración</div>
+        <button class="modal-close" aria-label="Cerrar panel">✕</button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="modal-tabs">
+          <button class="mtab active" id="mt-wod">Nuevo WOD</button>
+          <button class="mtab"        id="mt-pdf">Nuevo PDF</button>
+        </div>
+
+
+        <!-- ── FORMULARIO WOD ── -->
+        <div id="mf-wod">
+
+          <div class="form-section">
+            <div class="form-section-title">Subir PDF del WOD</div>
+            <div class="pdf-url-tip">
+              <div class="pdf-url-tip-title">¿Cómo subir el WOD?</div>
+              <ol class="pdf-url-tip-steps">
+                <li>Sube el PDF de tu WOD a Google Drive</li>
+                <li>Clic derecho → <strong>Compartir</strong> → acceso a "Cualquier persona con el enlace"</li>
+                <li>Copia el enlace y pégalo aquí</li>
+                <li>La IA lee el PDF y lo muestra tal cual en la app</li>
+              </ol>
+            </div>
+            <div class="form-group" style="margin-top:14px">
+              <label class="form-label" for="f-wod-week">Semana / fecha</label>
+              <input class="form-input" id="f-wod-week" type="text" placeholder="Sem 18 · 28 abr 2026">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-wod-url">Enlace del PDF (Google Drive)</label>
+              <input class="form-input" id="f-wod-url" type="url"
+                placeholder="https://drive.google.com/file/d/..."
+                oninput="WodAI.previewUrl(this.value)">
+            </div>
+            <div id="wod-url-preview" hidden class="pdf-url-preview">
+              <span class="pdf-url-preview-ok">✓</span>
+              <span id="wod-url-preview-text"></span>
+              <a id="wod-url-preview-link" href="#" target="_blank" rel="noopener noreferrer" class="pdf-url-preview-test">Probar enlace →</a>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button class="btn btn-gold" id="btn-publish-wod" type="button">Leer PDF y publicar WOD →</button>
+            <button class="btn btn-ghost btn-cancel-modal" type="button">Cancelar</button>
+          </div>
+
+          <div id="wod-ai-status" hidden style="margin-top:14px;padding:12px;background:var(--gold4);border:1px solid var(--border);border-radius:8px;font-size:12px;color:var(--muted);text-align:center">
+            <span id="wod-ai-status-text">Leyendo el PDF con IA...</span>
+          </div>
+
+          <div class="toast" id="toast-wod">✓ WOD publicado correctamente. Ya visible en la app.</div>
+
+        </div><!-- /mf-wod -->
+
+
+        <!-- ── FORMULARIO PDF — hidden por defecto (atributo HTML) ── -->
+        <div id="mf-pdf" hidden>
+
+          <div class="form-section">
+            <div class="form-section-title">Datos del documento</div>
+            <div class="form-group">
+              <label class="form-label" for="p-name">Nombre del PDF</label>
+              <input class="form-input" id="p-name" type="text" placeholder="Guía de movilidad articular">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="p-cat">Categoría</label>
+                <select class="form-select" id="p-cat">
+                  <option>Entrenamiento</option>
+                  <option>Nutrición</option>
+                  <option>Estilo de vida</option>
+                  <option>Suplementación</option>
+                  <option>Otros</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="p-pages">Nº páginas</label>
+                <input class="form-input" id="p-pages" type="number" placeholder="8" min="1">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">Enlace del PDF</div>
+            <div class="pdf-url-tip">
+              <div class="pdf-url-tip-title">¿Cómo obtener el enlace de Google Drive?</div>
+              <ol class="pdf-url-tip-steps">
+                <li>Sube el PDF a Google Drive</li>
+                <li>Clic derecho → <strong>Compartir</strong></li>
+                <li>Cambia acceso a <strong>"Cualquier persona con el enlace"</strong></li>
+                <li>Copia el enlace y pégalo aquí</li>
+              </ol>
+            </div>
+            <div class="form-group" style="margin-top:12px">
+              <label class="form-label" for="p-url">Enlace del PDF</label>
+              <input class="form-input" id="p-url" type="url"
+                placeholder="https://drive.google.com/file/d/..."
+                oninput="handlers.previewPdfUrl(this.value)">
+            </div>
+            <div id="p-url-preview" class="pdf-url-preview" hidden>
+              <span class="pdf-url-preview-ok">✓</span>
+              <span id="p-url-preview-text"></span>
+              <a id="p-url-preview-link" href="#" target="_blank" rel="noopener noreferrer" class="pdf-url-preview-test">Probar enlace →</a>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button class="btn btn-gold" id="btn-publish-pdf" type="button">Añadir a la biblioteca →</button>
+            <button class="btn btn-ghost btn-cancel-modal" type="button">Cancelar</button>
+          </div>
+          <div class="toast" id="toast-pdf">✓ PDF añadido correctamente. Ya disponible para descarga.</div>
+
+        </div><!-- /mf-pdf -->
+
+      </div><!-- /modal-body -->
+    </div><!-- /modal -->
+  </div><!-- /overlay -->
+
+
+  <script src="app.js"></script>
+</body>
+</html>
