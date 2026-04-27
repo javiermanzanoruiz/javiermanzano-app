@@ -1,0 +1,1762 @@
+/* ============================================================
+   JM FITNESS APP — styles.css
+   Autor: Javier Manzano Fitness
+   Descripción: Todos los estilos de la SPA. Organizado por
+   sección para facilitar el mantenimiento.
+   ============================================================ */
+
+/* ── RESET & VARIABLES GLOBALES ── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Paleta de color */
+  --gold:    #C4973A;
+  --gold2:   #E8C96A;
+  --gold3:   rgba(196, 151, 58, 0.12);
+  --gold4:   rgba(196, 151, 58, 0.06);
+  --black:   #080808;
+  --s1:      #0E0E0E;   /* superficie 1 — cards */
+  --s2:      #161616;   /* superficie 2 — inputs, notas */
+  --s3:      #1E1E1E;
+  --s4:      #272727;
+  --text:    #F5F0E8;
+  --muted:   #7A7570;
+  --muted2:  #4A4540;
+  --border:  rgba(196, 151, 58, 0.15);
+  --border2: rgba(196, 151, 58, 0.32);
+  --wa:      #25D366;   /* WhatsApp green */
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* ============================================================
+   SPLASH SCREEN
+   ============================================================ */
+#splash {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  transition: opacity 0.9s ease 0.2s;
+}
+
+#splash.out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sp-jm {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  font-weight: 300;
+  color: var(--gold);
+  letter-spacing: 12px;
+  line-height: 1;
+  animation: fadeUp 0.8s ease both;
+}
+
+.sp-line {
+  width: 1px;
+  background: var(--gold);
+  height: 0;
+  margin: 20px auto;
+  opacity: 0.5;
+  transition: height 1s ease 0.5s;
+}
+
+.sp-line.grow {
+  height: 50px;
+}
+
+.sp-sub {
+  font-size: 9px;
+  letter-spacing: 6px;
+  color: var(--muted);
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ============================================================
+   LAYOUT PRINCIPAL
+   ============================================================ */
+.shell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar {
+  width: 230px;
+  min-width: 230px;
+  background: var(--s1);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+/* Línea dorada decorativa superior */
+.sidebar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.6;
+}
+
+/* Logo / marca */
+.sb-brand {
+  padding: 30px 24px 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sb-logo-line {
+  display: flex;
+  align-items: baseline;
+}
+
+.sb-logo-javier {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.sb-logo-manzano {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--text);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.sb-tagline {
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+/* Navegación */
+.sb-nav {
+  flex: 1;
+  padding: 18px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  overflow-y: auto;
+}
+
+.sb-section-label {
+  font-size: 7px;
+  letter-spacing: 3.5px;
+  color: var(--muted2);
+  text-transform: uppercase;
+  padding: 14px 12px 5px;
+}
+
+.sb-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.18s;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  user-select: none;
+}
+
+.sb-item svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sb-item:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.sb-item.active {
+  color: var(--gold);
+  background: var(--gold4);
+  border-color: var(--border);
+}
+
+/* Footer del sidebar — botón admin */
+.sb-footer {
+  padding: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.admin-trigger {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.admin-trigger:hover {
+  color: var(--gold);
+  border-color: var(--border2);
+  background: var(--gold4);
+}
+
+.admin-trigger svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* ============================================================
+   HAMBURGER — solo visible en móvil
+   ============================================================ */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 300;
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--gold);
+  transition: all 0.3s;
+}
+
+
+/* ============================================================
+   ÁREA PRINCIPAL
+   ============================================================ */
+.main {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--black);
+  scroll-behavior: smooth;
+}
+
+.main::-webkit-scrollbar { width: 3px; }
+.main::-webkit-scrollbar-thumb {
+  background: var(--border2);
+  border-radius: 2px;
+}
+
+
+/* ============================================================
+   SISTEMA DE TABS / PÁGINAS
+   ============================================================ */
+.tab { display: none; }
+.tab.active { display: block; }
+
+/* Cabecera de página */
+.page-header {
+  padding: 44px 44px 0;
+  position: relative;
+}
+
+.page-eyebrow {
+  font-size: 8px;
+  letter-spacing: 4.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 46px;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+
+.page-desc {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+  line-height: 1.6;
+}
+
+/* Separador dorado bajo el header */
+.page-rule {
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin: 26px 44px 34px;
+  opacity: 0.35;
+}
+
+.page-body {
+  padding: 0 44px 64px;
+}
+
+
+/* ============================================================
+   SECCIÓN WOD — Entrenamiento de la semana
+   ============================================================ */
+
+/* Chip "mes activo" con punto pulsante */
+.month-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--gold4);
+  border: 1px solid var(--border2);
+  border-radius: 2px;
+  font-size: 8px;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  padding: 4px 12px;
+  margin-bottom: 18px;
+}
+
+.month-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: inline-block;
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* Tarjeta hero del WOD actual */
+.wod-hero {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.wod-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.wod-hero-top {
+  padding: 28px 32px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.wod-eyebrow {
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.wod-title-display {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.05;
+}
+
+.wod-subtitle {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 6px;
+  letter-spacing: 0.3px;
+}
+
+.wod-badges {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.wod-pill {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  padding: 5px 13px;
+  border: 1px solid var(--border2);
+  border-radius: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.wod-diff {
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+
+.wod-diff-label {
+  font-size: 7px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  text-align: right;
+}
+
+/* Lista de ejercicios dentro del WOD */
+.wod-exercises {
+  border-top: 1px solid var(--border);
+  padding: 4px 32px;
+}
+
+.wod-ex-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.wod-ex-row:last-child { border-bottom: none; }
+
+.wod-ex-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  color: var(--muted2);
+  width: 22px;
+  flex-shrink: 0;
+}
+
+.wod-ex-name {
+  font-size: 13px;
+  color: var(--text);
+  flex: 1;
+}
+
+.wod-ex-spec {
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Barra de nota del entrenador */
+.wod-note-bar {
+  background: var(--s2);
+  border-top: 1px solid var(--border);
+  padding: 14px 32px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.wod-note-kw {
+  font-size: 7px;
+  letter-spacing: 3.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  padding-top: 3px;
+  flex-shrink: 0;
+}
+
+.wod-note-txt {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Archivo de WODs anteriores */
+.archive-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.block-kw {
+  font-size: 8px;
+  letter-spacing: 3.5px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.archive-count {
+  font-size: 10px;
+  color: var(--muted2);
+}
+
+.archive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.archive-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Línea dorada que aparece en hover desde la izquierda */
+.archive-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.28s ease;
+  transform-origin: left;
+}
+
+.archive-card:hover { border-color: var(--border2); }
+.archive-card:hover::after { transform: scaleX(1); }
+
+.ac-week {
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.ac-title {
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 4px;
+  font-weight: 300;
+}
+
+.ac-meta {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+
+/* ============================================================
+   SECCIÓN RUTINAS
+   ============================================================ */
+.rutina-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 22px 26px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transition: border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Línea dorada vertical izquierda que sube en hover */
+.rutina-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--gold);
+  transform: scaleY(0);
+  transition: transform 0.28s ease;
+  transform-origin: bottom;
+}
+
+.rutina-card:hover { border-color: var(--border2); }
+.rutina-card:hover::before { transform: scaleY(1); }
+
+.rc-days {
+  font-size: 8px;
+  letter-spacing: 3.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.rc-name {
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 300;
+  margin-bottom: 4px;
+}
+
+.rc-desc {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.rc-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+
+/* ============================================================
+   SECCIÓN PDFs — Biblioteca de documentos
+   ============================================================ */
+.pdf-block {
+  margin-bottom: 32px;
+}
+
+.pdf-block-title {
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2px;
+}
+
+.pdf-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.pdf-row:last-child { border-bottom: none; }
+
+.pdf-icon {
+  width: 36px;
+  height: 42px;
+  background: var(--s2);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.pdf-info { flex: 1; }
+
+.pdf-name {
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.pdf-meta {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+}
+
+
+/* ============================================================
+   TARJETAS DE TIPS (Nutrición / Descanso)
+   ============================================================ */
+.tips-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.tip-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 22px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Línea dorada decorativa en la parte superior de cada card */
+.tip-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 20%; right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.4;
+}
+
+.tip-icon {
+  font-size: 20px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.tip-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.tip-body {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   SECCIÓN CONTACTO
+   ============================================================ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.cc-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 32px 28px;
+  text-align: center;
+  transition: border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.cc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.cc-card:hover { border-color: var(--border2); }
+.cc-card:hover::before { opacity: 0.5; }
+
+.cc-icon {
+  font-size: 30px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.cc-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.cc-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* Bloque de Instagram en contacto */
+.instagram-block {
+  text-align: center;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.instagram-label {
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.instagram-handle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  color: var(--gold);
+  text-decoration: none;
+  transition: opacity 0.2s;
+  display: inline-block;
+}
+
+.instagram-handle:hover { opacity: 0.7; }
+
+
+/* ============================================================
+   BOTONES
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.btn-gold:hover {
+  background: var(--gold2);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--border2);
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  background: var(--gold4);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+  color: var(--text);
+  border-color: var(--border2);
+}
+
+.btn-wa {
+  background: var(--wa);
+  color: #fff;
+  width: 100%;
+  padding: 13px;
+  font-size: 11px;
+}
+
+.btn-wa:hover {
+  background: #1fbd58;
+  transform: translateY(-1px);
+}
+
+.btn-cal {
+  background: var(--s2);
+  color: var(--text);
+  border: 1px solid var(--border2);
+  width: 100%;
+  padding: 13px;
+  font-size: 11px;
+}
+
+.btn-cal:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+
+/* ============================================================
+   CTA BOX — llamada a la acción
+   ============================================================ */
+.cta-box {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 36px;
+  text-align: center;
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 20%; right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.5;
+}
+
+.cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.cta-desc {
+  font-size: 12px;
+  color: var(--muted);
+  max-width: 380px;
+  margin: 0 auto 22px;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   PANEL ADMIN — Modal overlay
+   ============================================================ */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+}
+
+.overlay.open { display: flex; }
+
+.modal {
+  background: var(--s1);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  width: 580px;
+  max-width: 96vw;
+  max-height: 92vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.modal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.modal-head {
+  padding: 28px 32px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--gold);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.modal-close:hover { color: var(--text); }
+
+.modal-body { padding: 24px 32px 32px; }
+
+/* Tabs del modal (WOD / PDF) */
+.modal-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.mtab {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mtab.active {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+}
+
+/* Formularios del modal */
+.form-section { margin-bottom: 24px; }
+
+.form-section-title {
+  font-size: 7px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.form-group { margin-bottom: 12px; }
+
+.form-label {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  background: var(--s2);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--gold);
+}
+
+.form-textarea {
+  min-height: 76px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.form-select option {
+  background: var(--s2);
+  color: var(--text);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Filas de ejercicios en el formulario WOD */
+.ex-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.ex-row .form-input { flex: 1; }
+
+.ex-spec {
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.btn-add-ex {
+  width: 100%;
+  background: transparent;
+  border: 1px dashed var(--border2);
+  color: var(--gold);
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 9px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-add-ex:hover {
+  background: var(--gold4);
+  border-color: var(--gold);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+/* Toast de confirmación */
+.toast {
+  display: none;
+  margin-top: 12px;
+  background: rgba(37, 211, 102, 0.1);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  color: #25d366;
+  font-size: 12px;
+  padding: 11px 16px;
+  border-radius: 5px;
+  letter-spacing: 0.3px;
+}
+.toast--visible {
+  display: block;
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile (≤720px)
+   ============================================================ */
+@media (max-width: 720px) {
+  /* Sidebar oculto por defecto, se abre con JS */
+  .sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    z-index: 200;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open { transform: translateX(0); }
+
+  .hamburger { display: flex; }
+
+  .page-header { padding: 60px 20px 0; }
+  .page-rule   { margin: 22px 20px 26px; }
+  .page-body   { padding: 0 20px 50px; }
+
+  .wod-hero-top   { flex-direction: column; gap: 14px; }
+  .wod-exercises  { padding: 4px 20px; }
+  .wod-note-bar   { padding: 14px 20px; }
+
+  .archive-grid               { grid-template-columns: 1fr; }
+  .tips-grid, .contact-grid   { grid-template-columns: 1fr; }
+  .rutina-card                { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .form-row                   { grid-template-columns: 1fr; }
+
+  /* Bloques nuevos — móvil */
+  .welcome-block              { padding: 20px 16px; }
+  .welcome-title              { font-size: 18px; }
+  .welcome-pillars            { gap: 6px; }
+  .wp-label                   { font-size: 9px; }
+
+  .howto-step                 { gap: 12px; }
+  .hs-num                     { font-size: 18px; width: 26px; }
+
+  .meso-timeline              { gap: 5px; }
+  .meso-week                  { font-size: 8px; }
+  .meso-label                 { font-size: 9px; }
+
+  .wod-block                  { padding: 12px; }
+  .wod-block-name             { font-size: 11px; }
+
+  .pdf-url-tip                { padding: 12px; }
+  .pdf-url-tip-steps li       { font-size: 11px; }
+
+  .alimentos-grid             { grid-template-columns: repeat(2, 1fr); }
+}
+
+
+/* ============================================================
+   BLOQUE ALIMENTOS CLAVE (Nutrición)
+   En el original eran divs con style="" inline.
+   Ahora tienen clases propias.
+   ============================================================ */
+.alimentos-clave {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 24px;
+}
+
+.alimentos-titulo {
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.alimentos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.alimentos-grid div {
+  font-size: 12px;
+  color: var(--muted);
+  padding: 10px 0;
+}
+
+.alimentos-grid div:nth-child(-n+3) {
+  border-bottom: 1px solid var(--border);
+}
+
+
+/* ============================================================
+   AÑADIDOS EN FASE 2 — Persistencia y botones funcionales
+   ============================================================ */
+
+/* ── Elementos del admin-trigger que antes eran style="" inline ── */
+.admin-trigger__label {
+  flex: 1;
+}
+
+.admin-trigger__chevron {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── Estado "pendiente" para botones sin URL real todavía ──
+   Se aplica a botones de rutinas y PDFs seed sin enlace.
+   Visualmente ligeramente apagado para indicar que no está listo. */
+.btn--pending {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── [hidden] — asegura que el atributo HTML hidden funcione en todos los navegadores ──
+   Reemplaza style="display:none" en #mf-pdf del modal. */
+[hidden] {
+  display: none !important;
+}
+
+/* ── rc-info — contenedor del texto de cada rutina-card ──
+   Antes era un <div> sin clase. Ahora tiene .rc-info para mayor semántica. */
+.rc-info {
+  flex: 1;
+  min-width: 0; /* evita overflow en flex con texto largo */
+}
+
+/* ── PDF URL tip — instrucciones Google Drive ── */
+.pdf-url-tip {
+  background: var(--gold4);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.pdf-url-tip-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.pdf-url-tip-steps {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.pdf-url-tip-steps li {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.pdf-url-tip-steps strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ── PDF URL preview ── */
+.pdf-url-preview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(39, 174, 96, 0.08);
+  border: 1px solid rgba(39, 174, 96, 0.25);
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+.pdf-url-preview-ok {
+  color: #27ae60;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.pdf-url-preview span:nth-child(2) {
+  font-size: 11px;
+  color: var(--muted);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pdf-url-preview-test {
+  font-size: 11px;
+  color: var(--gold);
+  text-decoration: none;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.pdf-url-preview-test:hover {
+  text-decoration: underline;
+}
+
+/* ── WOD AI — bloques de entrenamiento ── */
+.wod-block {
+  background: rgba(255,255,255,.028);
+  border: 1px solid var(--border);
+  border-radius: var(--r1);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.wod-block-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.wod-block-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.wod-block-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  flex: 1;
+}
+
+.wod-block-dur {
+  font-size: 11px;
+  color: var(--t3);
+  background: var(--gold4);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  padding: 2px 10px;
+  flex-shrink: 0;
+}
+
+.wod-block-note {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--t3);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.wod-ex-note {
+  grid-column: 2 / -1;
+  font-size: 10.5px;
+  color: var(--t4);
+  font-style: italic;
+  margin-top: -4px;
+  padding-left: 2px;
+}
+
+/* ── content-block-title — separador de bloques temáticos ── */
+.content-block-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 28px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+/* ── Bienvenida ── */
+.welcome-block {
+  padding: 28px 24px 24px;
+  background: linear-gradient(135deg, rgba(201,168,76,.07) 0%, transparent 60%);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--r1);
+  margin-bottom: 20px;
+}
+
+.welcome-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.welcome-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.welcome-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.welcome-pillars {
+  display: flex;
+  gap: 10px;
+}
+
+.welcome-pillar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border);
+  border-radius: var(--r1);
+}
+
+.wp-icon { font-size: 18px; }
+.wp-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ── Cómo usar ── */
+.howto-block {
+  margin-bottom: 24px;
+}
+
+.howto-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.howto-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.howto-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.howto-step:last-child { border-bottom: none; }
+
+.hs-num {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--border-gold);
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 32px;
+}
+
+.hs-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.hs-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ── Timeline mesociclos ── */
+.meso-timeline {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  align-items: flex-end;
+}
+
+.meso-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.meso-week {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.meso-bar {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.3s ease;
+}
+
+.meso-low    { height: 40px;  background: rgba(201,168,76,.25); }
+.meso-mid    { height: 65px;  background: rgba(201,168,76,.45); }
+.meso-high   { height: 90px;  background: rgba(201,168,76,.75); }
+.meso-deload { height: 25px;  background: rgba(255,255,255,.1); border: 1px dashed var(--border); }
+
+.meso-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.meso-label span {
+  font-size: 9px;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+/* ── Splash con logo real ── */
+.splash-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.splash-logo-img {
+  width: 220px;
+  max-width: 70vw;
+  height: auto;
+  opacity: 0;
+  animation: fadeInLogo 0.8s ease 0.3s forwards;
+}
+
+@keyframes fadeInLogo {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Botón eliminar PDF dinámico ── */
+.btn-pdf-delete {
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.12);
+  color: var(--muted);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all var(--fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+}
+
+.btn-pdf-delete:hover {
+  border-color: #c0392b;
+  color: #c0392b;
+  background: rgba(192,57,43,.08);
+}
+
+/* ── Splash con logo ── */
+.splash-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.splash-logo-img {
+  width: 200px;
+  max-width: 65vw;
+  height: auto;
+  opacity: 0;
+  animation: fadeInLogo 0.8s ease 0.3s forwards;
+}
+
+@keyframes fadeInLogo {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Influencia alimentación ── */
+.tip-card--wide {
+  grid-column: 1 / -1;
+}
+
+.influence-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.influence-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--muted);
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 10px;
+}
+
+.influence-item span {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* ── Superfood tags ── */
+.superfood-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.superfood-list span {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--gold);
+  background: var(--gold4);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+
+@media (max-width: 720px) {
+  .influence-grid { grid-template-columns: repeat(2, 1fr); }
+  .tip-card--wide { grid-column: 1; }
+}
