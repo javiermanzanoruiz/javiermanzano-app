@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javier Manzano Fitness — Método Integral JM</title>
+  <meta name="description" content="App de guía y recursos del Método Integral JM. Entrenamientos semanales, rutinas, guías PDF, nutrición y descanso.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- SPLASH -->
+  <div id="splash">
+    <div class="splash-logo-wrap">
+      <img class="splash-logo-img" src="./logo.png" alt="Javier Manzano Fitness"
+           onerror="this.style.display='none'; document.querySelector('.sp-fallback').style.display='block';" />
+      <div class="sp-fallback" style="display:none; font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:300; color:var(--gold); letter-spacing:10px; animation:fadeUp 0.8s ease both;">JM</div>
+    </div>
+    <div class="sp-line" id="sp-line"></div>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+      <div class="sb-brand">
+        <div class="sb-logo-line">
+          <span class="sb-logo-javier">Javier&nbsp;</span>
+          <span class="sb-logo-manzano">Manzano</span>
+        </div>
+        <div class="sb-tagline">Fitness · Salud Integral</div>
+      </div>
+
+      <nav class="sb-nav">
+
+        <div class="sb-section-label">Entrenamiento</div>
+
+        <div class="sb-item active" data-tab="wod">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          WOD Mensual
+        </div>
+
+        <div class="sb-item" data-tab="rutinas">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          Rutinas
+        </div>
+
+        <div class="sb-section-label">Recursos</div>
+
+        <div class="sb-item" data-tab="pdfs">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Guías PDF
+        </div>
+
+        <div class="sb-section-label">Método JM</div>
+
+        <div class="sb-item" data-tab="nutricion">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/><path d="M8 12h8M12 8v8"/></svg>
+          Nutrición
+        </div>
+
+        <div class="sb-item" data-tab="descanso">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          Descanso
+        </div>
+
+        <div class="sb-item" data-tab="estres">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          Estrés & Mente
+        </div>
+
+        <div class="sb-item" data-tab="contacto">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.61a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Contacto
+        </div>
+
+      </nav>
+
+      <div class="sb-footer">
+        <div class="admin-trigger" role="button" aria-label="Abrir panel de administración">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 0 1 21.95 12 10 10 0 0 1 12 22 10 10 0 0 1 2.05 12 10 10 0 0 1 4.93 4.93"/></svg>
+          <span class="admin-trigger__label">Panel admin</span>
+          <svg class="admin-trigger__chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+
+    </aside>
+
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="main" id="main">
+
+
+      <!-- ════ TAB: WOD MENSUAL ════ -->
+      <div class="tab active" id="tab-wod">
+
+        <div class="welcome-block">
+          <div class="welcome-eyebrow">Javier Manzano Fitness</div>
+          <div class="welcome-title">Bienvenido a tu sistema de salud integral</div>
+          <p class="welcome-desc">Esta app es tu recurso de referencia. Aquí encontrarás el entrenamiento mensual, tus rutinas personalizadas, guías de nutrición, descanso y todos los recursos que necesitas para avanzar con claridad.</p>
+          <div class="welcome-pillars">
+            <div class="welcome-pillar"><span class="wp-icon">🏋️</span><span class="wp-label">Entrena</span></div>
+            <div class="welcome-pillar"><span class="wp-icon">🥗</span><span class="wp-label">Nutre</span></div>
+            <div class="welcome-pillar"><span class="wp-icon">🌙</span><span class="wp-label">Descansa</span></div>
+            <div class="welcome-pillar"><span class="wp-icon">🧠</span><span class="wp-label">Gestiona</span></div>
+          </div>
+        </div>
+
+        <div class="howto-block">
+          <div class="howto-title">Cómo usar la app</div>
+          <div class="howto-steps">
+            <div class="howto-step">
+              <div class="hs-num">01</div>
+              <div class="hs-text">
+                <div class="hs-title">WOD Mensual</div>
+                <div class="hs-desc">Cada mes publico un entrenamiento de referencia. Si un día no tienes tu rutina personalizada a mano, úsalo como guía.</div>
+              </div>
+            </div>
+            <div class="howto-step">
+              <div class="hs-num">02</div>
+              <div class="hs-text">
+                <div class="hs-title">Guías PDF</div>
+                <div class="hs-desc">En la sección Biblioteca tienes acceso a todas mis guías — nutrición, descanso, hormonas, suplementación y salud integral — organizadas por categoría.</div>
+              </div>
+            </div>
+            <div class="howto-step">
+              <div class="hs-num">03</div>
+              <div class="hs-text">
+                <div class="hs-title">Rutinas</div>
+                <div class="hs-desc">Accede a los planes de entrenamiento completos. Cada rutina tiene su PDF descargable con toda la programación.</div>
+              </div>
+            </div>
+            <div class="howto-step">
+              <div class="hs-num">04</div>
+              <div class="hs-text">
+                <div class="hs-title">Dudas o ajustes</div>
+                <div class="hs-desc">Si tienes alguna pregunta o necesitas ajustar algo en tu plan, escríbeme directamente por WhatsApp desde la sección Contacto.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-header">
+          <div class="page-eyebrow">Entrenamiento mensual</div>
+          <h1 class="page-title">WOD del Mes</h1>
+          <p class="page-desc">Actualizado cada mes · Entrenamiento de referencia</p>
+        </div>
+        <div class="page-rule"></div>
+
+        <div class="page-body">
+
+          <div class="month-chip">
+            <span class="month-dot" aria-hidden="true"></span>
+            <span id="current-month-label"></span>
+          </div>
+
+          <div class="wod-hero" id="wod-hero-container">
+            <div id="wod-ai-content">
+              <div class="wod-hero-top">
+                <div>
+                  <div class="wod-eyebrow"      id="wd-week"></div>
+                  <div class="wod-title-display" id="wd-title"></div>
+                  <div class="wod-subtitle"      id="wd-subtitle"></div>
+                </div>
+                <div class="wod-badges">
+                  <div class="wod-pill"       id="wd-format"></div>
+                  <div class="wod-diff"       id="wd-diff"></div>
+                  <div class="wod-diff-label">Dificultad</div>
+                </div>
+              </div>
+              <div class="wod-exercises" id="wd-exercises"></div>
+              <div class="wod-note-bar">
+                <div class="wod-note-kw">Nota</div>
+                <div class="wod-note-txt" id="wd-note"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="archive-label">
+            <div class="block-kw">Archivo de WODs</div>
+            <div class="archive-count" id="archive-count"></div>
+          </div>
+          <div class="archive-grid" id="wod-archive"></div>
+
+        </div>
+      </div><!-- /tab-wod -->
+
+
+      <!-- ════ TAB: RUTINAS ════ -->
+      <div class="tab" id="tab-rutinas">
+
+        <div class="page-header">
+          <div class="page-eyebrow">Entrenamiento estructurado</div>
+          <h1 class="page-title">Rutinas</h1>
+          <p class="page-desc">Programación real · Progresión por mesociclos · Todas descargables en PDF</p>
+        </div>
+        <div class="page-rule"></div>
+
+        <div class="page-body">
+
+          <div class="welcome-block" style="margin-bottom:20px">
+            <div class="welcome-eyebrow">El Método Integral JM</div>
+            <div class="welcome-title">Entrena con inteligencia, no con más horas</div>
+            <p class="welcome-desc">Todas las rutinas están diseñadas bajo el mismo principio: progresión estructurada por mesociclos, control real de la intensidad y adaptación a tu vida. No hay rutinas de relleno — cada sesión tiene un propósito claro.</p>
+          </div>
+
+          <div class="content-block-title">El RIR — tu herramienta de intensidad</div>
+          <div class="tips-grid" style="margin-bottom:20px">
+            <div class="tip-card">
+              <span class="tip-icon">🎯</span>
+              <div class="tip-title">¿Qué es el RIR?</div>
+              <p class="tip-body">RIR significa "Repeticiones en Reserva". Es el número de reps que te quedarían antes de fallar. RIR 2 = podrías hacer 2 más. Es la forma más honesta de medir la intensidad real de tu entrenamiento.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">📈</span>
+              <div class="tip-title">Cómo progresar</div>
+              <p class="tip-body">Semanas 1–2: RIR 3–4 (aprendizaje técnico). Semanas 3–4: RIR 2 (acumulación). Semanas 5–6: RIR 1 (intensificación). Semana 7: Deload. Este ciclo se repite con más carga cada mesociclo.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">⚠️</span>
+              <div class="tip-title">Error más común</div>
+              <p class="tip-body">Ir siempre al fallo. Entrenar constantemente a RIR 0 destruye la recuperación y frena el progreso a largo plazo. La clave es acumular volumen de calidad, no acumular fatiga sin sentido.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🔄</span>
+              <div class="tip-title">Superseries y técnicas</div>
+              <p class="tip-body">Algunas rutinas incluyen superseries, drop sets o series descendentes. Están indicadas en el PDF. Úsalas solo cuando te lo indique — son herramientas de intensificación, no la norma.</p>
+            </div>
+          </div>
+
+          <div class="content-block-title">Cómo está estructurada la programación</div>
+          <div class="meso-timeline">
+            <div class="meso-step">
+              <div class="meso-week">Sem 1–2</div>
+              <div class="meso-bar meso-low"></div>
+              <div class="meso-label">Adaptación<br><span>RIR 3–4</span></div>
+            </div>
+            <div class="meso-step">
+              <div class="meso-week">Sem 3–4</div>
+              <div class="meso-bar meso-mid"></div>
+              <div class="meso-label">Acumulación<br><span>RIR 2</span></div>
+            </div>
+            <div class="meso-step">
+              <div class="meso-week">Sem 5–6</div>
+              <div class="meso-bar meso-high"></div>
+              <div class="meso-label">Intensificación<br><span>RIR 1</span></div>
+            </div>
+            <div class="meso-step">
+              <div class="meso-week">Sem 7</div>
+              <div class="meso-bar meso-deload"></div>
+              <div class="meso-label">Deload<br><span>–40% volumen</span></div>
+            </div>
+          </div>
+
+          <div class="content-block-title">Elige tu rutina</div>
+          <div id="rutinas-list"></div>
+
+          <div class="cta-box">
+            <div class="cta-title">¿Quieres una rutina personalizada para ti?</div>
+            <p class="cta-desc">Estas rutinas son un punto de partida sólido. El Método Integral JM trabaja desde tu situación real — tu historial, tus objetivos y tu vida — no desde una plantilla genérica.</p>
+            <button class="btn btn-gold" id="cta-ir-contacto">Reservar llamada gratuita →</button>
+          </div>
+
+        </div>
+      </div><!-- /tab-rutinas -->
+
+
+      <!-- ════ TAB: PDFs — BIBLIOTECA ════ -->
+      <div class="tab" id="tab-pdfs">
+
+        <div class="page-header">
+          <div class="page-eyebrow">Biblioteca de recursos</div>
+          <h1 class="page-title">Guías & PDFs</h1>
+          <p class="page-desc">Descarga los documentos del Método Integral JM</p>
+        </div>
+        <div class="page-rule"></div>
+
+        <div class="page-body">
+
+          <!-- Filtro por categoría -->
+          <div class="pdf-filter-bar" id="pdf-filter-bar">
+            <button class="pdf-filter-btn active" data-filter="todos">Todos</button>
+            <button class="pdf-filter-btn" data-filter="Salud General">Salud General</button>
+            <button class="pdf-filter-btn" data-filter="Nutrición">Nutrición</button>
+            <button class="pdf-filter-btn" data-filter="Entrenamiento">Entrenamiento</button>
+            <button class="pdf-filter-btn" data-filter="Descanso">Descanso</button>
+            <button class="pdf-filter-btn" data-filter="Mujer & Hormonas">Mujer & Hormonas</button>
+            <button class="pdf-filter-btn" data-filter="Suplementación">Suplementación</button>
+          </div>
+
+          <div id="pdf-library">
+
+            <!-- CATEGORÍA: Salud General -->
+            <div class="pdf-block" id="pdf-cat-salud-general" data-category="Salud General">
+              <div class="pdf-block-title">Salud General</div>
+
+              <div class="pdf-row">
+                <div class="pdf-icon">PDF</div>
+                <div class="pdf-info">
+                  <div class="pdf-name-wrap"><div class="pdf-name">Guía para la Salud</div></div>
+                  <div class="pdf-meta">Salud General · Método Integral JM</div>
+                  <div class="pdf-desc">Fundamentos del método JM: los 4 pilares de la salud integral explicados con claridad.</div>
+                </div>
+                <a href="https://canva.link/i3kttora2ysf71v" target="_blank" rel="noopener noreferrer" class="btn btn-gold">↓</a>
+              </div>
+
+              <div class="pdf-row">
+                <div class="pdf-icon">PDF</div>
+                <div class="pdf-info">
+                  <div class="pdf-name-wrap"><div class="pdf-name">Sanación del Cuerpo de Manera Natural</div></div>
+                  <div class="pdf-meta">Salud General · Descanso · Bienestar</div>
+                  <div class="pdf-desc">Cómo apoyar los procesos naturales de recuperación y regeneración del organismo.</div>
+                </div>
+                <a href="https://drive.google.com/file/d/1WtPbZHwUuMF1H-xjBC3r23WDLpnC4yfP/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-gold">↓</a>
+              </div>
+            </div>
+
+            <!-- CATEGORÍA: Nutrición -->
+            <div class="pdf-block" id="pdf-cat-nutricion" data-category="Nutrición">
+              <div class="pdf-block-title">Nutrición</div>
+
+              <div class="pdf-row">
+                <div class="pdf-icon">PDF</div>
+                <div class="pdf-info">
+                  <div class="pdf-name-wrap"><div class="pdf-name">Dieta Antiinflamatoria</div></div>
+                  <div class="pdf-meta">Nutrición · Alimentación · Inflamación</div>
+                  <div class="pdf-desc">Protocolo alimentario para reducir la inflamación crónica y mejorar el rendimiento y la recuperación.</div>
+                </div>
+                <a href="https://drive.google.com/file/d/1diOXLQ8ERK3Rgf3_gqn21qITvwyTCa-9/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-gold">↓</a>
+              </div>
+
+              <div class="pdf-row">
+                <div class="pdf-icon">PDF</div>
+                <div class="pdf-info">
+                  <div class="pdf-name-wrap"><div class="pdf-name">Aprende a Comer a tu Manera</div><span class="pdf-badge-new">Nuevo</span></div>
+                  <div class="pdf-meta">Nutrición · Hábitos · Sin dietas</div>
+                  <div class="pdf-desc">Una guía práctica para construir una relación sana con la comida, sin contar calorías ni prohibiciones.</div>
+                </div>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-gold">↓</a>
+              </div>
+            </div>
+
+            <!-- CATEGORÍA: Entrenamiento -->
+            <div class="pdf-block" id="pdf-cat-entrenamiento" data-category="Entrenamiento">
+              <div class="pdf-block-title">Entrenamiento</div>
+
+              <div class="pdf-row">
+                <div class="pdf-icon">PDF</div>
+                <div class="pdf-info">
+                  <div class="pdf-name-wrap"><div class="pdf-name">Guía de Movilidad Articular</div></div>
+                  <div class="pdf-meta">Entrenamiento · Movilidad · Prevención</div>
+                  <div class="pdf-desc">Rutina de 15 minutos diarios para mejorar el rango de movimiento y prevenir lesiones.</div>
+                </div>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-gold">↓</a>
+              </div>
+
+              <div class="pdf-row">
+                <div class="pdf-icon">PDF</div>
+                <div class="pdf-info">
+                  <div class="pdf-name-wrap"><div class="pdf-name">Entrena Mientras Viajas</div></div>
+                  <div class="pdf-meta">Entrenamiento · Sin material · Viajes</div>
+                  <div class="pdf-desc">Protocolo de entrenamiento completo para mantener el progreso cuando no tienes acceso a un gimnasio.</div>
+                </div>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-gold">↓</a>
+              </div>
+            </div>
+
+            <!-- CATEGORÍA: Mujer & Hormonas -->
+            <div class="pdf-block" id="pdf-cat-mujer-hormonas" data-category="Mujer & Hormonas">
+              <div class="pdf-block-title">Mujer &amp; Hormonas</div>
+
+              <div class="pdf-row">
+                <div class="pdf-icon">PDF</div>
+                <div class="pdf-info">
+                  <div class="pdf-name-wrap"><div class="pdf-name">Mujer: Comprende Tu Cuerpo y Hormonas</div></div>
+                  <div class="pdf-meta">Salud femenina · Hormonas · Bienestar</div>
+                  <div class="pdf-desc">Guía completa sobre el sistema hormonal femenino y cómo influye en el entrenamiento y la nutrición.</div>
+                </div>
+                <a href="https://drive.google.com/file/d/1hS7n2P9sXByVDHaAQ-BEOUuxLnM5_aYq/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-gold">↓</a>
+              </div>
+
+              <div class="pdf-row">
+                <div class="pdf-icon">PDF</div>
+                <div class="pdf-info">
+                  <div class="pdf-name-wrap"><div class="pdf-name">Comprendiendo el Ciclo Menstrual</div></div>
+                  <div class="pdf-meta">Salud femenina · Entrenamiento · Nutrición por fase</div>
+                  <div class="pdf-desc">Cómo adaptar el entrenamiento y la alimentación a cada fase del ciclo para maximizar los resultados.</div>
+                </div>
+                <a href="https://drive.google.com/file/d/1hekqCvAcxSAmBt5aLRW2dEHeuzuGZxu7/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-gold">↓</a>
+              </div>
+            </div>
+
+            <!-- CATEGORÍA: Descanso -->
+            <div class="pdf-block" id="pdf-cat-descanso" data-category="Descanso">
+              <div class="pdf-block-title">Descanso</div>
+
+              <div class="pdf-row">
+                <div class="pdf-icon">PDF</div>
+                <div class="pdf-info">
+                  <div class="pdf-name-wrap"><div class="pdf-name">Protocolo para Conciliar el Sueño</div></div>
+                  <div class="pdf-meta">Descanso · Sistema nervioso · Ritmos circadianos</div>
+                  <div class="pdf-desc">Rutina nocturna paso a paso para mejorar la calidad y la profundidad del sueño de forma natural.</div>
+                </div>
+                <a href="https://canva.link/bm6pz52pqqvkohh" target="_blank" rel="noopener noreferrer" class="btn btn-gold">↓</a>
+              </div>
+            </div>
+
+            <!-- CATEGORÍA: Suplementación -->
+            <div class="pdf-block" id="pdf-cat-suplementacion" data-category="Suplementación">
+              <div class="pdf-block-title">Suplementación</div>
+
+              <div class="pdf-row">
+                <div class="pdf-icon">PDF</div>
+                <div class="pdf-info">
+                  <div class="pdf-name-wrap"><div class="pdf-name">Guía de Suplementación Básica JM</div><span class="pdf-badge-new">Nuevo</span></div>
+                  <div class="pdf-meta">Suplementación · Evidencia científica</div>
+                  <div class="pdf-desc">Qué suplementos funcionan realmente, para qué sirven y en qué dosis. Sin humo, solo evidencia.</div>
+                </div>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-gold">↓</a>
+              </div>
+            </div>
+
+          </div><!-- /pdf-library -->
+        </div>
+      </div><!-- /tab-pdfs -->
+
+
+      <!-- ════ TAB: NUTRICIÓN ════ -->
+      <div class="tab" id="tab-nutricion">
+
+        <div class="page-header">
+          <div class="page-eyebrow">Método Integral JM</div>
+          <h1 class="page-title">Nutrición</h1>
+          <p class="page-desc">No dietas. Estrategia. Hábitos que duran.</p>
+        </div>
+        <div class="page-rule"></div>
+
+        <div class="page-body">
+
+          <div class="content-block-title">Los pilares</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🥩</span>
+              <div class="tip-title">Come Más Mejor (CMM)</div>
+              <p class="tip-body">No se trata de comer menos, sino de comer inteligente. Prioriza proteína, vegetales y calidad. Aprende a gestionar porciones sin obsesión calórica.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">⚡</span>
+              <div class="tip-title">Proteína: la base</div>
+              <p class="tip-body">1,6–2,2 g por kg de peso. Huevos, pollo, merluza, sardinas, legumbres, queso fresco, yogur griego. Sin suplementos si tu dieta es sólida.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">💧</span>
+              <div class="tip-title">Hidratación</div>
+              <p class="tip-body">Mínimo 2 litros al día. Con entrenamiento fuerte o calor, añade electrolitos (sal, potasio). La orina debe ser amarillo pálido — ese es tu indicador más fiable. Un mal estado de hidratación te cuesta hasta un 15% de rendimiento.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">💊</span>
+              <div class="tip-title">Suplementación base</div>
+              <p class="tip-body">Creatina 5g/día, Vitamina D3 + K2 en invierno, Omega-3 si tu dieta es baja en pescado azul. Todo lo demás es opcional. Consulta la Guía de Suplementación en la biblioteca.</p>
+            </div>
+          </div>
+
+          <div class="content-block-title">Cómo estructurar tus comidas</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🌅</span>
+              <div class="tip-title">Desayuno</div>
+              <p class="tip-body">Prioriza proteína desde primera hora. Huevos, yogur griego, queso fresco o fiambre de calidad. Evita azúcares simples al despertar — disparan el cortisol y generan hambre a las 2 horas.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">☀️</span>
+              <div class="tip-title">Comida principal</div>
+              <p class="tip-body">Tu comida más completa. Proteína + carbohidrato de calidad (arroz, patata, legumbre) + verdura. Si entrenas por la tarde, este es tu depósito de glucógeno.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🌙</span>
+              <div class="tip-title">Cena</div>
+              <p class="tip-body">Más ligera que la comida. Proteína + verdura + grasa saludable. Reduce carbohidratos si no has entrenado. Cena al menos 2 horas antes de dormir para no interferir con el descanso.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🏋️</span>
+              <div class="tip-title">Antes y después de entrenar</div>
+              <p class="tip-body">Pre: carbohidrato de fácil digestión 60–90 min antes. Post: proteína + carbohidrato en los 60 min siguientes. La ventana anabólica es real pero no dramática — lo importante es el total del día.</p>
+            </div>
+          </div>
+
+          <div class="content-block-title">Timing circadiano</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">⏰</span>
+              <div class="tip-title">Desayuna en las primeras 2h</div>
+              <p class="tip-body">Tu metabolismo está más activo por la mañana. Comer en las primeras 2 horas del día sincroniza el reloj biológico y mejora la sensibilidad a la insulina durante todo el día.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🌆</span>
+              <div class="tip-title">Carbohidratos por la mañana</div>
+              <p class="tip-body">La sensibilidad a la insulina es máxima en la primera mitad del día. Concentrar los carbohidratos en el desayuno y la comida favorece la composición corporal a largo plazo.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🌑</span>
+              <div class="tip-title">Cenar 2h antes de dormir</div>
+              <p class="tip-body">La digestión activa eleva la temperatura corporal e interfiere con el sueño profundo. Respetar ese margen mejora la calidad del sueño y la recuperación muscular nocturna.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">⏱</span>
+              <div class="tip-title">Ayuno intermitente: ¿sí o no?</div>
+              <p class="tip-body">Es una herramienta, no un mandamiento. Si te ayuda a controlar el apetito sin perjudicar el rendimiento ni el sueño, úsalo. Si te genera ansiedad o afecta al entrenamiento, no compensa.</p>
+            </div>
+          </div>
+
+          <div class="content-block-title">Mitos que hay que destruir</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">❌</span>
+              <div class="tip-title">"Los carbohidratos engordan"</div>
+              <p class="tip-body">Falso. El exceso de calorías totales engorda, no un macronutriente. Los carbohidratos son el combustible principal del músculo. Eliminarlos hunde tu rendimiento y tu recuperación.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">❌</span>
+              <div class="tip-title">"Hay que comer cada 3 horas"</div>
+              <p class="tip-body">No hay evidencia que sostenga esto. Come cuando tengas hambre y organiza tus comidas según tu horario real. Lo que importa es el total diario, no la frecuencia.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">❌</span>
+              <div class="tip-title">"La grasa es el enemigo"</div>
+              <p class="tip-body">Las grasas saludables son esenciales para la producción hormonal, la absorción de vitaminas y la salud cerebral. Temer a la grasa lleva a déficits que afectan directamente al rendimiento.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">❌</span>
+              <div class="tip-title">"Más proteína = más músculo"</div>
+              <p class="tip-body">Hasta cierto punto. Superar los 2,2 g/kg no aporta beneficio adicional. El entrenamiento y el descanso son los que construyen músculo — la proteína es la materia prima, no el motor.</p>
+            </div>
+          </div>
+
+          <div class="alimentos-clave">
+            <div class="alimentos-titulo">Alimentos de referencia JM</div>
+            <div class="alimentos-grid">
+              <div>Merluza al vapor</div><div>Tortilla de patata</div><div>Lentejas con verdura</div>
+              <div>Sardinas en aceite</div><div>Yogur griego natural</div><div>Arroz con pollo</div>
+              <div>Aguacate con huevo</div><div>Kéfir natural</div><div>Caballa al horno</div>
+              <div>Brócoli con AOVE</div><div>Avena con frutos rojos</div><div>Nueces y almendras</div>
+            </div>
+          </div>
+
+          <div class="content-block-title">La alimentación va mucho más allá</div>
+          <div class="tip-card tip-card--wide">
+            <span class="tip-icon">🧠</span>
+            <div class="tip-title">No solo sirve para adelgazar o engordar</div>
+            <p class="tip-body">Lo que comes cada día tiene un impacto directo en cómo te sientes, cómo rindes y cómo envejeces. La alimentación influye en:</p>
+            <div class="influence-grid">
+              <div class="influence-item"><span>😴</span> Dormir mejor o peor</div>
+              <div class="influence-item"><span>🎯</span> Concentrarte más o menos</div>
+              <div class="influence-item"><span>⚡</span> Tener energía o no</div>
+              <div class="influence-item"><span>😊</span> Buen o mal humor</div>
+              <div class="influence-item"><span>🧠</span> Mejor o peor memoria</div>
+              <div class="influence-item"><span>💇</span> Caída del cabello</div>
+              <div class="influence-item"><span>😔</span> Tristeza sin razón aparente</div>
+              <div class="influence-item"><span>🩸</span> Dolor menstrual</div>
+              <div class="influence-item"><span>🦴</span> Inflamación articular</div>
+              <div class="influence-item"><span>🤧</span> Ponerte más veces enfermo</div>
+              <div class="influence-item"><span>🔥</span> Tu metabolismo directamente</div>
+            </div>
+          </div>
+
+          <div class="content-block-title">Superalimentos — Antiedad &amp; Antioxidantes</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon">🫐</span>
+              <div class="tip-title">Antioxidantes</div>
+              <p class="tip-body">Combaten el daño celular y el envejecimiento prematuro.</p>
+              <div class="superfood-list"><span>Arándanos</span><span>Cacao puro</span><span>Granada</span><span>Espinacas</span></div>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🦴</span>
+              <div class="tip-title">Colágeno</div>
+              <p class="tip-body">Esencial para articulaciones, piel y tejido conectivo.</p>
+              <div class="superfood-list"><span>Caldo de huesos</span><span>Pescados</span><span>Mariscos</span><span>Gelatina natural</span></div>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">💧</span>
+              <div class="tip-title">Hidratantes</div>
+              <p class="tip-body">Alimentos con alto contenido en agua que hidratan desde dentro.</p>
+              <div class="superfood-list"><span>Calabacín</span><span>Apio</span><span>Sandía</span><span>Pepino</span></div>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🐟</span>
+              <div class="tip-title">Ricos en Omega-3</div>
+              <p class="tip-body">Antiinflamatorios naturales. Cuidan el corazón y el cerebro.</p>
+              <div class="superfood-list"><span>Chía</span><span>Frutos secos</span><span>Linaza</span><span>Pescados azules</span></div>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🥝</span>
+              <div class="tip-title">Vitamina C</div>
+              <p class="tip-body">Refuerza el sistema inmune y favorece la síntesis de colágeno.</p>
+              <div class="superfood-list"><span>Kiwi</span><span>Frambuesa</span><span>Pimentón</span><span>Piña</span></div>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🥑</span>
+              <div class="tip-title">Vitamina E</div>
+              <p class="tip-body">Protege las células del daño oxidativo. Clave para la piel y el sistema nervioso.</p>
+              <div class="superfood-list"><span>Almendras</span><span>Semillas de girasol</span><span>Aguacate</span><span>Hojas verdes</span></div>
+            </div>
+          </div>
+
+          <div class="content-block-title">Salud digestiva — Alimentos clave</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon">🌿</span>
+              <div class="tip-title">Antiinflamatorios digestivos</div>
+              <p class="tip-body">Albahaca, canela, cúrcuma y menta. Reducen la inflamación intestinal, calman espasmos y mejoran la digestión.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🌱</span>
+              <div class="tip-title">Ricos en fibra</div>
+              <p class="tip-body">Nopal, chía, linaza y apio. Regulan el tránsito intestinal y alimentan la microbiota.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🍵</span>
+              <div class="tip-title">Reguladores del azúcar</div>
+              <p class="tip-body">Canela y nopal ayudan a controlar los picos de glucosa en sangre, reduciendo los antojos y la inflamación sistémica.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🌺</span>
+              <div class="tip-title">Regeneradores intestinales</div>
+              <p class="tip-body">Sábila (aloe vera), papaya y manzanilla. Regeneran la mucosa gastrointestinal y calman el malestar estomacal.</p>
+            </div>
+          </div>
+
+          <!-- CTA mini -->
+          <div class="cta-mini">
+            <div class="cta-mini-text">
+              ¿Quieres aplicar esto a tu caso concreto?
+              <span>Una llamada de 30 min gratuita para analizar tu alimentación y tus objetivos.</span>
+            </div>
+            <a href="https://wa.me/34679691337?text=Hola%20Javier%2C%20quiero%20mejorar%20mi%20nutrici%C3%B3n" target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="flex-shrink:0">Escribir a Javier →</a>
+          </div>
+
+        </div>
+      </div><!-- /tab-nutricion -->
+
+
+      <!-- ════ TAB: DESCANSO ════ -->
+      <div class="tab" id="tab-descanso">
+
+        <div class="page-header">
+          <div class="page-eyebrow">Método Integral JM</div>
+          <h1 class="page-title">Descanso &amp; Recuperación</h1>
+          <p class="page-desc">El pilar más ignorado. El que más diferencia.</p>
+        </div>
+        <div class="page-rule"></div>
+
+        <div class="page-body">
+
+          <div class="content-block-title">El sueño como herramienta</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🌙</span>
+              <div class="tip-title">Sueño de calidad</div>
+              <p class="tip-body">7–9 horas reales. Más importante que cualquier suplemento. Regula cortisol, favorece la síntesis proteica y controla el apetito. Mismo horario siempre.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">☀️</span>
+              <div class="tip-title">Luz solar al despertar</div>
+              <p class="tip-body">10–15 minutos de sol directo en los primeros 30 min del día. Sincroniza tu reloj biológico, detiene la melatonina residual y regula el cortisol de forma natural. Es gratis y es de lo más efectivo.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">📵</span>
+              <div class="tip-title">Sin pantallas 1h antes</div>
+              <p class="tip-body">La luz azul de pantallas inhibe la melatonina y retrasa el sueño profundo. Pon el móvil en modo avión, baja la intensidad de las luces y crea un ambiente que le diga a tu cuerpo que es de noche.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">❄️</span>
+              <div class="tip-title">Temperatura y entorno</div>
+              <p class="tip-body">La habitación entre 18–21ºC favorece el sueño profundo. Oscuridad total, silencio o ruido blanco. El cuerpo necesita bajar su temperatura interna para entrar en fase REM — el calor lo impide.</p>
+            </div>
+          </div>
+
+          <div class="content-block-title">Control del cortisol y el estrés</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🧠</span>
+              <div class="tip-title">Qué es el cortisol</div>
+              <p class="tip-body">El cortisol es la hormona del estrés. En dosis normales es necesario — te activa por la mañana y regula la energía. El problema es cuando se mantiene elevado crónicamente: bloquea la pérdida de grasa, destruye músculo y arruina el sueño.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🌬️</span>
+              <div class="tip-title">Respiración 4-7-8</div>
+              <p class="tip-body">Inhala 4 segundos, retén 7, exhala 8. Activa el sistema nervioso parasimpático en minutos. Úsala antes de dormir, en momentos de ansiedad o antes de una sesión intensa. 3–5 rondas son suficientes.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🚶</span>
+              <div class="tip-title">Caminar: la herramienta más infravalorada</div>
+              <p class="tip-body">7.000–10.000 pasos diarios reducen el cortisol, mejoran la sensibilidad a la insulina y aceleran la recuperación muscular. Los días sin entrenamiento son días de movimiento ligero, no de sofá.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">📱</span>
+              <div class="tip-title">Cortisol digital</div>
+              <p class="tip-body">Cada notificación, cada scroll infinito, cada comparación en redes dispara cortisol. Pon límites reales al uso del móvil. Los primeros 30 minutos del día y la última hora antes de dormir: sin redes sociales.</p>
+            </div>
+          </div>
+
+          <div class="content-block-title">Recuperación activa e inteligente</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">📆</span>
+              <div class="tip-title">Semana de descarga (deload)</div>
+              <p class="tip-body">Cada 4–6 semanas reduce el volumen un 40% manteniendo la intensidad. No es perder el tiempo — es donde el cuerpo consolida las adaptaciones. Sin deload, llegas al sobreentrenamiento sin darte cuenta.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🧘</span>
+              <div class="tip-title">Movilidad y estiramientos</div>
+              <p class="tip-body">10–15 minutos de movilidad articular al día mejora la recuperación y previene lesiones. No tiene que ser una sesión de yoga — una rutina sencilla de cadera, hombros y columna es suficiente. Descarga la Guía de Movilidad en la biblioteca.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🛁</span>
+              <div class="tip-title">Baños y termoterapia</div>
+              <p class="tip-body">Ducha fría por la mañana activa el sistema nervioso y mejora la resiliencia al estrés. Baño caliente por la noche favorece la relajación muscular y el sueño. La combinación calor-frío acelera la recuperación.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon" aria-hidden="true">🌿</span>
+              <div class="tip-title">Naturaleza y desconexión</div>
+              <p class="tip-body">20–30 minutos en un entorno natural reduce el cortisol de forma medible. Paseo por el campo, playa o parque sin móvil. El shinrin yoku (baño de bosque japonés) tiene evidencia científica sólida sobre su impacto en el sistema nervioso.</p>
+            </div>
+          </div>
+
+          <div class="content-block-title">Señales de que no estás recuperando bien</div>
+          <div class="alert-grid">
+            <div class="alert-card">
+              <div class="alert-title">⚠️ Rendimiento en caída</div>
+              <div class="alert-body">Si llevas 2 semanas sin progresar o con bajadas en los pesos que manejabas, no es falta de esfuerzo — es falta de recuperación. Más entrenamiento en este punto solo empeora las cosas.</div>
+            </div>
+            <div class="alert-card">
+              <div class="alert-title">⚠️ Irritabilidad y mal humor</div>
+              <div class="alert-body">El cortisol elevado afecta directamente al estado de ánimo. Si estás más irascible de lo normal, con poca paciencia o apático, tu sistema nervioso está saturado.</div>
+            </div>
+            <div class="alert-card">
+              <div class="alert-title">⚠️ Hambre descontrolada</div>
+              <div class="alert-body">La privación de sueño dispara la grelina (hormona del hambre) y suprime la leptina (saciedad). Si tienes antojos constantes de azúcar, revisa primero cuántas horas y con qué calidad estás durmiendo.</div>
+            </div>
+            <div class="alert-card">
+              <div class="alert-title">⚠️ Lesiones frecuentes</div>
+              <div class="alert-body">Las lesiones por uso repetitivo y las molestias que no remiten son señales de que el cuerpo no tiene tiempo de repararse entre sesiones. No es mala suerte — es sobreentrenamiento encubierto.</div>
+            </div>
+          </div>
+
+          <!-- CTA mini -->
+          <div class="cta-mini">
+            <div class="cta-mini-text">
+              ¿Tu sueño o recuperación no está funcionando?
+              <span>Cuéntame tu situación y lo analizamos juntos. Sin compromiso.</span>
+            </div>
+            <a href="https://wa.me/34679691337?text=Hola%20Javier%2C%20tengo%20problemas%20con%20el%20descanso%20y%20la%20recuperaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="flex-shrink:0">Escribir a Javier →</a>
+          </div>
+
+        </div>
+      </div><!-- /tab-descanso -->
+
+
+      <!-- ════ TAB: ESTRÉS & MENTALIDAD (NUEVO) ════ -->
+      <div class="tab" id="tab-estres">
+
+        <div class="page-header">
+          <div class="page-eyebrow">Método Integral JM — 4º Pilar</div>
+          <h1 class="page-title">Estrés &amp; Mentalidad</h1>
+          <p class="page-desc">El pilar más subestimado. El que lo condiciona todo.</p>
+        </div>
+        <div class="page-rule"></div>
+
+        <div class="page-body">
+
+          <div class="welcome-block" style="margin-bottom:24px">
+            <div class="welcome-eyebrow">Por qué importa</div>
+            <div class="welcome-title">Sin gestión del estrés, los otros 3 pilares no funcionan del todo</div>
+            <p class="welcome-desc">Puedes entrenar perfecto, comer bien y dormir 8 horas — y seguir sin progresar si el estrés crónico está elevado. El estrés psicológico y el estrés físico del entrenamiento comparten los mismos recursos. Si uno desborda, el otro sufre.</p>
+          </div>
+
+          <div class="content-block-title">Cómo el estrés afecta a tu cuerpo</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon">🔥</span>
+              <div class="tip-title">Bloquea la pérdida de grasa</div>
+              <p class="tip-body">El cortisol elevado crónicamente promueve el almacenamiento de grasa visceral, especialmente en el abdomen. No es genética — es estrés mal gestionado.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">💪</span>
+              <div class="tip-title">Destruye músculo</div>
+              <p class="tip-body">En estado de estrés crónico, el cuerpo utiliza proteína muscular como combustible (catabolismo). Puedes estar entrenando y perdiendo músculo al mismo tiempo.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🧠</span>
+              <div class="tip-title">Daña la cognición</div>
+              <p class="tip-body">El estrés sostenido reduce la memoria, la capacidad de concentración y la toma de decisiones. No es debilidad — es biología. El hipocampo se ve directamente afectado.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🦠</span>
+              <div class="tip-title">Suprime el sistema inmune</div>
+              <p class="tip-body">El cortisol crónico inhibe la respuesta inmunitaria. Si te pones enfermo con frecuencia o tardas mucho en recuperarte, el estrés puede ser el factor subyacente.</p>
+            </div>
+          </div>
+
+          <div class="content-block-title">Protocolo diario de gestión del estrés</div>
+
+          <div class="protocolo-box">
+            <div class="protocolo-num">01</div>
+            <div class="protocolo-body">
+              <div class="protocolo-title">Primeros 30 minutos del día: sin pantallas</div>
+              <p class="protocolo-desc">Los primeros 30 minutos del día son el momento de mayor plasticidad neuronal. Lo que haces en ese tiempo condiciona el estado del sistema nervioso durante las siguientes horas. Sal fuera, toma luz natural, haz respiraciones conscientes. No abras el móvil.</p>
+              <span class="protocolo-tag">Sistema nervioso</span>
+            </div>
+          </div>
+
+          <div class="protocolo-box">
+            <div class="protocolo-num">02</div>
+            <div class="protocolo-body">
+              <div class="protocolo-title">Respiración consciente: técnica 4-7-8</div>
+              <p class="protocolo-desc">Inhala por la nariz 4 segundos, retén 7, exhala por la boca 8. Activa el nervio vago y el sistema nervioso parasimpático en menos de 2 minutos. Úsala antes de dormir, antes de entrenar, o en cualquier momento de tensión. 3–5 ciclos son suficientes.</p>
+              <span class="protocolo-tag">Nervio vago · Parasimpático</span>
+            </div>
+          </div>
+
+          <div class="protocolo-box">
+            <div class="protocolo-num">03</div>
+            <div class="protocolo-body">
+              <div class="protocolo-title">Movimiento diario: 7.000–10.000 pasos</div>
+              <p class="protocolo-desc">Caminar es la herramienta antiinflamatoria y antiestres más subestimada. Reduce el cortisol, mejora la sensibilidad a la insulina, aclara la mente y acelera la recuperación. No tiene que ser un paseo "especial" — es simplemente no estar sentado.</p>
+              <span class="protocolo-tag">Cortisol · Insulina · Recuperación</span>
+            </div>
+          </div>
+
+          <div class="protocolo-box">
+            <div class="protocolo-num">04</div>
+            <div class="protocolo-body">
+              <div class="protocolo-title">Meditación o silencio intencional: 5–10 min/día</div>
+              <p class="protocolo-desc">No hace falta una app ni una postura especial. Sentarte en silencio durante 5–10 minutos observando la respiración es suficiente para reducir la actividad del córtex prefrontal ligado a la rumiación. La consistencia importa más que la duración.</p>
+              <span class="protocolo-tag">Meditación · Mindfulness</span>
+            </div>
+          </div>
+
+          <div class="protocolo-box">
+            <div class="protocolo-num">05</div>
+            <div class="protocolo-body">
+              <div class="protocolo-title">Límites digitales reales</div>
+              <p class="protocolo-desc">Cada notificación es una microinterrupción que activa la respuesta de amenaza del sistema nervioso. Pon el teléfono en modo "no molestar" durante las comidas, las primeras horas del día y la última hora antes de dormir. No es desconectarse — es proteger tu sistema nervioso.</p>
+              <span class="protocolo-tag">Dopamina · Sistema nervioso simpático</span>
+            </div>
+          </div>
+
+          <div class="protocolo-box">
+            <div class="protocolo-num">06</div>
+            <div class="protocolo-body">
+              <div class="protocolo-title">Contacto social de calidad</div>
+              <p class="protocolo-desc">El contacto humano real libera oxitocina, que inhibe directamente el cortisol. Las personas con vínculos sociales sólidos tienen menos inflamación crónica, mejor rendimiento cognitivo y mayor longevidad. No es opcional — es fisiología.</p>
+              <span class="protocolo-tag">Oxitocina · Cortisol · Longevidad</span>
+            </div>
+          </div>
+
+          <div class="content-block-title">Herramientas de recuperación mental</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon">📓</span>
+              <div class="tip-title">Journaling: 5 min al día</div>
+              <p class="tip-body">Escribir 3 cosas por las que estás agradecido activa circuitos de recompensa y reduce la actividad de la amígdala (centro del miedo y la amenaza). Es una de las intervenciones más respaldadas por la neurociencia.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🌊</span>
+              <div class="tip-title">Exposición al frío</div>
+              <p class="tip-body">Duchas frías o baños de agua fría (entre 10–15ºC durante 2–3 minutos) aumentan la norepinefrina hasta un 300%, mejoran el estado de ánimo y entrenan la tolerancia al estrés. Empieza con 30 segundos al final de la ducha.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🎵</span>
+              <div class="tip-title">Música y dopamina</div>
+              <p class="tip-body">Escuchar música que te genera emoción libera dopamina y reduce el cortisol. Crea playlists para distintos momentos del día: una para activarte por la mañana, otra para relajarte por la noche.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🌳</span>
+              <div class="tip-title">Naturaleza (shinrin yoku)</div>
+              <p class="tip-body">20–30 minutos en un entorno natural reducen el cortisol, la presión arterial y la actividad de la amígdala de forma medible. El shinrin yoku (baño de bosque japonés) tiene evidencia sólida. Úsalo como herramienta, no como capricho.</p>
+            </div>
+          </div>
+
+          <div class="content-block-title">Mentalidad y progreso</div>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <span class="tip-icon">🔁</span>
+              <div class="tip-title">Identidad, no objetivos</div>
+              <p class="tip-body">Los objetivos crean presión y descansan en el futuro. La identidad vive en el presente. No "quiero perder 10 kg" — "soy una persona que entrena y cuida su alimentación". El comportamiento sigue a la identidad, no al revés.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">📏</span>
+              <div class="tip-title">Progreso no lineal</div>
+              <p class="tip-body">El progreso en salud y entrenamiento nunca es una línea recta. Habrá semanas de retroceso, de estancamiento, de bajón. Eso es parte del proceso — no una señal de fallo. El problema no es el bache, es abandonar en el bache.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🪞</span>
+              <div class="tip-title">Autocompasión vs autoexigencia</div>
+              <p class="tip-body">Los estudios muestran que la autocompasión lleva a mayor adherencia a largo plazo que la autoexigencia. Tratarte con la misma comprensión que tratarías a un amigo no es debilidad — es estrategia.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-icon">🎯</span>
+              <div class="tip-title">Proceso sobre resultado</div>
+              <p class="tip-body">Enfócate en los hábitos diarios, no en el peso de mañana. El cuerpo que quieres es el resultado de los hábitos que construyes — no de los días que te motivas, sino de los días que actúas aunque no te apetezca.</p>
+            </div>
+          </div>
+
+          <!-- CTA mini -->
+          <div class="cta-mini">
+            <div class="cta-mini-text">
+              ¿El estrés está afectando a tus resultados?
+              <span>Hablamos de tu situación y vemos cómo abordarlo dentro del Método JM.</span>
+            </div>
+            <a href="https://wa.me/34679691337?text=Hola%20Javier%2C%20el%20estr%C3%A9s%20me%20est%C3%A1%20afectando%20y%20quiero%20saber%20c%C3%B3mo%20mejorarlo" target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="flex-shrink:0">Escribir a Javier →</a>
+          </div>
+
+        </div>
+      </div><!-- /tab-estres -->
+
+
+      <!-- ════ TAB: CONTACTO ════ -->
+      <div class="tab" id="tab-contacto">
+
+        <div class="page-header">
+          <div class="page-eyebrow">Trabaja con Javier</div>
+          <h1 class="page-title">Contacto</h1>
+          <p class="page-desc">Sin compromisos · Respuesta en menos de 24h</p>
+        </div>
+        <div class="page-rule"></div>
+
+        <div class="page-body">
+          <div class="contact-grid">
+
+            <div class="cc-card">
+              <span class="cc-icon" aria-hidden="true">💬</span>
+              <div class="cc-title">WhatsApp directo</div>
+              <p class="cc-desc">La forma más rápida. Sin bots, sin asistentes. Resuelvo dudas sobre WODs, rutinas o cualquier consulta del método.</p>
+              <a href="https://wa.me/34679691337?text=Hola%20Javier%2C%20he%20visto%20tu%20app%20y%20quiero%20saber%20m%C3%A1s"
+                 class="btn btn-wa" target="_blank" rel="noopener noreferrer">
+                Escribir a Javier →
+              </a>
+            </div>
+
+            <div class="cc-card">
+              <span class="cc-icon" aria-hidden="true">📅</span>
+              <div class="cc-title">Llamada diagnóstico</div>
+              <p class="cc-desc">30 minutos gratuitos. Analizamos tu situación y objetivos. Si hay encaje, empezamos. Si no, sin problema.</p>
+              <a href="https://tr.ee/7v77NR5yG2"
+                 class="btn btn-cal" target="_blank" rel="noopener noreferrer">
+                Reservar llamada →
+              </a>
+            </div>
+
+          </div>
+
+          <div class="instagram-block">
+            <div class="instagram-label">Sígueme en Instagram</div>
+            <a href="https://instagram.com/javiermanzanofitness"
+               class="instagram-handle" target="_blank" rel="noopener noreferrer">
+              @javiermanzanofitness
+            </a>
+          </div>
+        </div>
+      </div><!-- /tab-contacto -->
+
+
+    </main>
+  </div><!-- /shell -->
+
+
+  <!-- PANEL ADMIN -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Panel de administración">
+    <div class="modal">
+
+      <div class="modal-head">
+        <div class="modal-title">Panel de administración</div>
+        <button class="modal-close" aria-label="Cerrar panel">✕</button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="modal-tabs">
+          <button class="mtab active" id="mt-wod">WOD</button>
+          <button class="mtab"        id="mt-pdf">Añadir</button>
+          <button class="mtab"        id="mt-gestionar">Gestionar</button>
+        </div>
+
+        <!-- ── TAB: WOD ── -->
+        <div id="mf-wod">
+
+          <div class="form-section">
+            <div class="form-section-title">Publicar WOD del mes</div>
+            <div class="pdf-url-tip">
+              <div class="pdf-url-tip-title">¿Cómo subir el WOD?</div>
+              <ol class="pdf-url-tip-steps">
+                <li>Sube el PDF de tu WOD a Google Drive</li>
+                <li>Clic derecho → <strong>Compartir</strong> → "Cualquier persona con el enlace"</li>
+                <li>Copia el enlace y pégalo aquí</li>
+                <li>La IA lo lee y lo publica automáticamente</li>
+              </ol>
+            </div>
+            <div class="form-group" style="margin-top:14px">
+              <label class="form-label" for="f-wod-week">Mes / periodo</label>
+              <input class="form-input" id="f-wod-week" type="text" placeholder="Junio 2026">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-wod-url">Enlace del PDF (Google Drive)</label>
+              <input class="form-input" id="f-wod-url" type="url"
+                placeholder="https://drive.google.com/file/d/..."
+                oninput="WodAI.previewUrl(this.value)">
+            </div>
+            <div id="wod-url-preview" hidden class="pdf-url-preview">
+              <span class="pdf-url-preview-ok">✓</span>
+              <span id="wod-url-preview-text"></span>
+              <a id="wod-url-preview-link" href="#" target="_blank" rel="noopener noreferrer" class="pdf-url-preview-test">Probar enlace →</a>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button class="btn btn-gold" id="btn-publish-wod" type="button">Leer PDF y publicar WOD →</button>
+            <button class="btn btn-ghost btn-cancel-modal" type="button">Cancelar</button>
+          </div>
+
+          <div id="wod-ai-status" hidden style="margin-top:14px;padding:12px;background:var(--gold4);border:1px solid var(--border);border-radius:8px;font-size:12px;color:var(--muted);text-align:center">
+            <span id="wod-ai-status-text">Leyendo el PDF con IA...</span>
+          </div>
+
+          <div class="toast" id="toast-wod">✓ WOD publicado correctamente.</div>
+
+        </div><!-- /mf-wod -->
+
+
+        <!-- ── TAB: AÑADIR PDF / RUTINA ── -->
+        <div id="mf-pdf" hidden>
+
+          <!-- Sub-tabs dentro de "Añadir" -->
+          <div class="add-subtabs">
+            <button class="add-subtab active" data-subtab="pdf">Nueva guía PDF</button>
+            <button class="add-subtab"        data-subtab="rutina">Nueva rutina</button>
+          </div>
+
+          <!-- Añadir PDF -->
+          <div id="add-pdf-form">
+            <div class="form-section">
+              <div class="form-section-title">Datos del documento</div>
+              <div class="form-group">
+                <label class="form-label" for="p-name">Nombre</label>
+                <input class="form-input" id="p-name" type="text" placeholder="Guía de movilidad articular">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="p-desc-input">Descripción breve</label>
+                <input class="form-input" id="p-desc-input" type="text" placeholder="De qué trata el documento...">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="p-cat">Categoría</label>
+                  <select class="form-select" id="p-cat">
+                    <option>Salud General</option>
+                    <option>Nutrición</option>
+                    <option>Entrenamiento</option>
+                    <option>Descanso</option>
+                    <option>Mujer &amp; Hormonas</option>
+                    <option>Suplementación</option>
+                    <option>Otros</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="p-pages">Nº páginas</label>
+                  <input class="form-input" id="p-pages" type="number" placeholder="8" min="1">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="p-url">Enlace del PDF</label>
+                <input class="form-input" id="p-url" type="url"
+                  placeholder="https://drive.google.com/file/d/..."
+                  oninput="handlers.previewPdfUrl(this.value)">
+              </div>
+              <div id="p-url-preview" class="pdf-url-preview" hidden>
+                <span class="pdf-url-preview-ok">✓</span>
+                <span id="p-url-preview-text"></span>
+                <a id="p-url-preview-link" href="#" target="_blank" rel="noopener noreferrer" class="pdf-url-preview-test">Probar enlace →</a>
+              </div>
+            </div>
+            <div class="modal-actions">
+              <button class="btn btn-gold" id="btn-publish-pdf" type="button">Añadir a la biblioteca →</button>
+              <button class="btn btn-ghost btn-cancel-modal" type="button">Cancelar</button>
+            </div>
+            <div class="toast" id="toast-pdf">✓ PDF añadido correctamente.</div>
+          </div><!-- /add-pdf-form -->
+
+          <!-- Añadir Rutina -->
+          <div id="add-rutina-form" hidden>
+            <div class="form-section">
+              <div class="form-section-title">Datos de la rutina</div>
+              <div class="form-group">
+                <label class="form-label" for="r-name">Nombre</label>
+                <input class="form-input" id="r-name" type="text" placeholder="Entrenamiento de Espalda y Bíceps">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="r-desc">Descripción breve</label>
+                <input class="form-input" id="r-desc" type="text" placeholder="Gimnasio · Hipertrofia · RPE 7-8">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="r-days">Frecuencia</label>
+                  <input class="form-input" id="r-days" type="text" placeholder="3 días / semana">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="r-level">Nivel</label>
+                  <select class="form-select" id="r-level">
+                    <option>Principiante</option>
+                    <option>Intermedio</option>
+                    <option>Intermedio / Avanzado</option>
+                    <option>Avanzado</option>
+                    <option>Todos los niveles</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="r-goal">Objetivo</label>
+                <input class="form-input" id="r-goal" type="text" placeholder="Hipertrofia, Fuerza, Definición...">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="r-url">Enlace PDF (opcional)</label>
+                <input class="form-input" id="r-url" type="url"
+                  placeholder="https://drive.google.com/file/d/..."
+                  oninput="handlers.previewRutinaUrl(this.value)">
+              </div>
+              <div id="r-url-preview" class="pdf-url-preview" hidden>
+                <span class="pdf-url-preview-ok">✓</span>
+                <span id="r-url-preview-text"></span>
+                <a id="r-url-preview-link" href="#" target="_blank" rel="noopener noreferrer" class="pdf-url-preview-test">Probar enlace →</a>
+              </div>
+            </div>
+            <div class="modal-actions">
+              <button class="btn btn-gold" id="btn-add-rutina" type="button">Añadir rutina →</button>
+              <button class="btn btn-ghost btn-cancel-modal" type="button">Cancelar</button>
+            </div>
+            <div class="toast" id="toast-rutina">✓ Rutina añadida correctamente.</div>
+          </div><!-- /add-rutina-form -->
+
+        </div><!-- /mf-pdf -->
+
+
+        <!-- ── TAB: GESTIONAR CONTENIDOS ── -->
+        <div id="mf-gestionar" hidden>
+
+          <div class="cm-section">
+            <div class="cm-section-header">
+              <div class="cm-section-title">Rutinas</div>
+              <span class="cm-section-count" id="cm-rutinas-count"></span>
+            </div>
+            <div id="admin-rutinas-list" class="cm-list">
+              <!-- Se rellena por render.adminRutinas() -->
+            </div>
+          </div>
+
+          <div class="cm-section" style="margin-top:24px">
+            <div class="cm-section-header">
+              <div class="cm-section-title">Guías PDF</div>
+              <span class="cm-section-count" id="cm-pdfs-count"></span>
+            </div>
+            <div id="admin-pdfs-list" class="cm-list">
+              <!-- Se rellena por render.adminPdfs() -->
+            </div>
+          </div>
+
+          <div class="toast" id="toast-gestionar">✓ Cambios guardados.</div>
+
+        </div><!-- /mf-gestionar -->
+
+
+        <!-- Logout -->
+        <button class="admin-logout" id="btn-admin-logout" type="button">✕ Cerrar sesión</button>
+
+      </div><!-- /modal-body -->
+    </div><!-- /modal -->
+  </div><!-- /overlay -->
+
+
+  <script src="app.js"></script>
+</body>
+</html>
